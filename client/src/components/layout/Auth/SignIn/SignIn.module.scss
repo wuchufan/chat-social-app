@@ -1,0 +1,41 @@
+.form-container{
+  display:flex;
+  flex-direction: column;
+  color:#72767d;
+  background-color: #36393f;
+  padding:3rem;
+  font-size: 2.4rem;
+}
+
+.input-container{
+  padding:1rem;
+}
+
+
+.form{
+  display:flex;
+  flex-direction: column;
+
+
+
+  &__title{
+    padding:2rem;
+    text-align: center;
+    &--primary{
+      color:#fff;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.input{
+  width:100%;
+}
+
+.label{
+  font-size: 1.2rem;
+}
+
+.redirect{
+  padding:1rem;
+}
