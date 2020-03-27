@@ -1,7 +1,10 @@
+@import '../../../sass/main';
+
 .landing{
   height:100vh;
   width:100%;
-  background-color: #26262b;
+  // background-color: #26262b;
+    background-image:url('../../../assets/img/auth.jpg');
 }
 .container{
   display:flex;
@@ -17,7 +20,7 @@
   font-size: 3rem;
   padding:3rem;
   border-radius:5px;
-  background-color: #7289da;
+  background-color: $color-background-primary;
 
   &:first-child{
     margin-right:5rem;

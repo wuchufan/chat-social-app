@@ -1,9 +1,14 @@
 import React from 'react';
-import { NavLink, Switch,Route } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import classes from './Landing.module.scss';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const Landing = props =>{
+const Landing = ({ auth:{ isAuthenticated }}) =>{
+
+  if(isAuthenticated) return <Redirect to='/dashboard'/>
+
+
   return (
     <section className={classes['landing']}>
       <div className={classes['container']}>
@@ -14,4 +19,13 @@ const Landing = props =>{
   )
 }
 
-export default Landing;
+Landing.propTypes={
+  auth:PropTypes.object.isRequired
+}
+
+
+const mapStateToProps = state =>({
+  auth:state.auth
+})
+
+export default connect(mapStateToProps)(Landing);

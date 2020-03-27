@@ -1,0 +1,79 @@
+@import '../../../sass/main';
+
+.container{
+  display:grid;
+  height:100vh;
+  width:100%;
+  grid-template-columns:10% 13% 1fr 20%;
+  grid-template-rows: 10% 1fr 10%;
+  grid-template-areas:
+  "navbar channel header header"
+  "navbar channel chat-room member-bar"
+  "navbar channel chat-bar member-bar"
+}
+.items{
+  padding:3rem;
+  font-size: 3rem;
+  color:#fff;
+}
+.navbar{
+  grid-area:navbar;
+  background-color: $color-background-tertiary;
+}
+
+.header{
+  grid-area:header;
+  background-color:$color-background-primary;
+  border-bottom:1px solid $color-background-tertiary;
+
+}
+.channel{
+
+  grid-area:channel;
+  background-color:$color-background-secondary;
+}
+
+.chat-room{
+  grid-area:chat-room;
+  background-color:$color-background-primary;
+  overflow-y: scroll;
+
+
+  &::-webkit-scrollbar{
+
+  width: 10px;
+  height: 8px;
+  border-radius: 5px;
+
+  }
+
+  &::-webkit-scrollbar-thumb{
+
+    border-radius: 5px;
+    background-color: $color-background-tertiary;
+  }
+}
+.chat-bar{
+  grid-area:chat-bar;
+  background-color:$color-background-primary;
+  padding:1.5rem;
+
+  &__type-block{
+    height:80%;
+    background-color: #4f545c;
+    color:#dcddde;
+    caret-color: currentColor;
+    border-radius:5px;
+    outline:none;
+    font-size:1.6rem;
+    padding:1rem;
+  }
+}
+.member-bar{
+  grid-area:member-bar;
+  background-color:$color-background-secondary;
+}
+
+.test{
+  color:black;
+}

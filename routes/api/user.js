@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../../models/User');
 const router = express.Router();
 
-//@Route Post api/user
+//@Route POST api/user
 //@Desc Register user
 //@Access Public
 
@@ -30,9 +30,24 @@ router.post('/', async (req,res)=>{
     user.password = await bcrypt.hash(password,salt);
 
     await user.save();
-    res.json('registered');
-    //return jsonwebtoken
 
+    const payload = {
+      user:{
+            id:user.id
+          }
+        }
+    //return jsonwebtoken
+    jwt.sign(
+      payload,
+      process.env.JWT_SECRET,
+      {expiresIn:36000},
+      (err,token)=>{
+        if(err) throw err;
+        else{
+          res.json({token});
+        }
+      }
+    )
 
   } catch(error){
     console.log(error);
