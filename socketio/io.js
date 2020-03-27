@@ -3,10 +3,14 @@ const { addUser, removeUser, getCurrentUser } = require('./user');
 module.exports = function (io){
   io.on('connection',function(socket){
     console.log(`user ${socket.id} has connected`);
-    //handle user joining room
-    socket.on('join',function(username){
-      addUser(username,socket.id);
+    console.log('[Backend] connection');
+    // io.emit('users',getCurrentUser())
+
+    // handle user joining room
+    socket.on('join',function(user){
+      console.log('[Backend] join');
       const currentUser = getCurrentUser();
+      addUser(user,socket.id);
       io.emit('users',currentUser);
     });
 

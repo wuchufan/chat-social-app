@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 
 const PrivateRoute = ({component:Component, auth:{ isAuthenticated,loading },...rest}) => {
+  if(loading) return <p>Loading...</p>
   return (
     <Route {...rest} render={(props)=> !isAuthenticated && !loading ? <Redirect to='/'/> : <Component {...props}/>}/>
   );

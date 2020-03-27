@@ -1,9 +1,13 @@
 import React from 'react';
+import classes from './ReceiveChat.module.scss';
 
-
-const ReceiveChat = ({receiveMsg}) => {
+const ReceiveChat = ({receiveMsg,user}) => {
   return (
-    <p>{receiveMsg}</p>
+    <div className={classes['message']}>
+      <div className={classes['message__name']}>{user.username}:</div>
+      <div className={classes['message__message']}>{receiveMsg}</div>
+    </div>
+
   );
 }
 

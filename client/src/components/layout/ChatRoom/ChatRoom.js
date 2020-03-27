@@ -1,4 +1,4 @@
-import React,{ Fragment,useEffect, useState } from 'react';
+import React,{ Fragment,useEffect, useState,useRef } from 'react';
 import { connect } from 'react-redux';
 import ChatBar from './ChatBar/ChatBar';
 import ReceiveChat from './ReceiveChat/ReceiveChat';
@@ -13,25 +13,37 @@ const ChatRoom = ({
   auth:{user}
 }) => {
 
+
   const [message, setMessage] = useState('');
   const [receiveMsgs, setReceiveMsgs] = useState([]);
   const [users, updateUsers] = useState([]);
 
+  //scroll to bottom functionality
+  const windowRef = useRef(null);
+  const node = windowRef.current;
+  useEffect(()=>{
+    if(node){
+        node.scrollTop = node.scrollHeight;
+    }
 
-  //change it when deploy
+  },[receiveMsgs])
+
+
+  //Should change it when deploy
   const ENDPOINT = 'http://localhost:5000/';
 
   //initiate socket connection
   useEffect(()=>{
+    console.log('[Frontend] useEffect');
     socket = io(ENDPOINT);
-
     if(user)socket.emit('join',user);
+
 
     return () =>{
       socket.disconnect();
       socket.off();
     }
-  },[]);
+  },[ENDPOINT]);
 
   useEffect(()=>{
 
@@ -40,17 +52,23 @@ const ChatRoom = ({
       setReceiveMsgs(receiveMsgs=> [...receiveMsgs, msg])
     });
 
+
     //get current users
     socket.on('users',(users)=>{
       updateUsers(users);
-    })
+    });
+
+
   },[]);
 
 
   const sendMessage = (e) =>{
     e.preventDefault();
-    socket.emit('message',message);
-    setMessage('');
+    if(message){
+      socket.emit('message',message);
+
+      setMessage('');
+    }
   };
 
 
@@ -67,13 +85,14 @@ const ChatRoom = ({
          <div className={classes['items']+' '+classes['channel']}>
            channel
          </div>
-         <div className={classes['items']+' '+classes['chat-room']}>
-           {receiveMsgs.map((msg,i)=><ReceiveChat key={i} receiveMsg={msg}/>)}
+         <div className={classes['items']+' '+classes['chat-room']} ref={windowRef}>
+           {receiveMsgs.map((msg,i)=><ReceiveChat user={user} key={i} receiveMsg={msg}/>)}
          </div>
          <div className={classes['items']+' '+classes['chat-bar']}>
            <ChatBar message={message} setMessage={setMessage} sendMessage={sendMessage} />
          </div>
          <div className={classes['items']+' '+classes['member-bar']}>
+           Members
            {users.map((user)=><User key={user._id} user={user} />)}
          </div>
        </section>
