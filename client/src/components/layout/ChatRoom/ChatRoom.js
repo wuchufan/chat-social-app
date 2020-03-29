@@ -60,7 +60,7 @@ const ChatRoom = ({
 
     //update message rendering
     socket.on('message',(msg)=>{
-  
+
       setReceiveMsgs(receiveMsgs=> [...receiveMsgs, msg])
     });
 
@@ -93,9 +93,10 @@ const ChatRoom = ({
     <Fragment>
 
         <section className={classes['container']}>
-         <div className={classes['items']+' '+classes['navbar']}>
+         <nav className={classes['items']+' '+classes['navbar']}>
+           
            <NavBar/>
-         </div>
+         </nav>
          <div className={classes['items']+' '+ classes['header']}>
            Welcome to Chat Room
          </div>

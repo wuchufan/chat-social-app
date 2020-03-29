@@ -1,5 +1,5 @@
 import React,{ Fragment, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { register } from '../../../actions/auth';
 import classes from './SignUp.module.scss';

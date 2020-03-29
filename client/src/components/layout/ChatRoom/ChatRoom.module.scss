@@ -1,10 +1,11 @@
 @import '../../../sass/main';
 
+$navbar-padding:2rem;
 .container{
   display:grid;
   height:100vh;
   width:100%;
-  grid-template-columns:10% 13% 1fr 20%;
+  grid-template-columns:4.5% 13% 1fr 20%;
   grid-template-rows: 10% 1fr 10%;
   grid-template-areas:
   "navbar channel header header"
@@ -17,8 +18,15 @@
   color:#fff;
 }
 .navbar{
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   grid-area:navbar;
   background-color: $color-background-tertiary;
+  width:calc(100% + #{$navbar-padding});
+  padding:$navbar-padding;
+  padding-left:0;
 }
 
 .header{
@@ -33,6 +41,7 @@
   flex-direction: column;
   grid-area:channel;
   background-color:$color-background-secondary;
+  border-top-left-radius: 20px;
 }
 
 .chat-room{
