@@ -13,7 +13,6 @@ import {
 
 //load user authentication state
 export const loadUser = () => async dispatch=>{
-
   if(localStorage.token){
     setAuthState(localStorage.token)
   }
@@ -51,7 +50,7 @@ export const register = ({username, email, password}) => async dispatch =>{
       type:REGISTER_SUCCESS,
       payload:res.data
     });
-
+      dispatch(loadUser());
   }catch(error){
     console.log(error);
     dispatch({
@@ -72,11 +71,13 @@ export const login = ({email, password}) => async dispatch =>{
 
     const res = await axios.post('/api/auth',{email,password},config);
 
+
+
     dispatch({
       type:LOGIN_SUCCESS,
       payload:res.data
     });
-    dispatch(loadUser());
+      dispatch(loadUser());
 
   }catch(error){
 

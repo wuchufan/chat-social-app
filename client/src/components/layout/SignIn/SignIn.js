@@ -1,12 +1,12 @@
 import React,{ Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { login } from '../../../../actions/auth';
+import { login } from '../../../actions/auth';
 import classes from './SignIn.module.scss';
 import PropTypes from 'prop-types';
 
 
-const SignIn = ({ login,auth:{isAuthenticated} }) => {
+const SignIn = ({ login,auth:{isAuthenticated, user},setAccount }) => {
 
   const [formData, setForm] = useState({
     email:'',
@@ -26,7 +26,9 @@ const SignIn = ({ login,auth:{isAuthenticated} }) => {
       [e.target.name] : e.target.value
     });
   }
-  if(isAuthenticated) return <Redirect to='/dashboard'/>
+  if(isAuthenticated && user) {
+
+    return <Redirect to='/chat-room'/>}
 
   return (
     <Fragment>
@@ -56,7 +58,17 @@ const SignIn = ({ login,auth:{isAuthenticated} }) => {
 
       </form>
       <div className={classes['redirect']}>
-        <p>Don't have an account? <Link exact="true" to='/auth/sign-up'>Sign Up</Link></p>
+        <p>
+          Don't have an account?{' '}
+          <span
+            style={{
+              cursor:'pointer',
+              color:'white'
+            }}
+            role='button'
+            onClick={()=>setAccount(false)}>Sign Up
+          </span>
+        </p>
       </div>
     </div>
 </Fragment>

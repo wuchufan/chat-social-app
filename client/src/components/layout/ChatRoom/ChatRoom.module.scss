@@ -28,7 +28,9 @@
 
 }
 .channel{
-
+  display:flex;
+  justify-content: space-between;
+  flex-direction: column;
   grid-area:channel;
   background-color:$color-background-secondary;
 }

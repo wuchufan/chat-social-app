@@ -1,4 +1,4 @@
-@import '../../../../sass/main';
+@import '../../../sass/main';
 
 
 .form-container{
@@ -73,7 +73,7 @@
     border:none;
     color:#fff;
     border-radius:5px;
-    transition:all 0.2s ease;
+        transition:all 0.2s ease;
     &:focus{
       outline:none;
     }

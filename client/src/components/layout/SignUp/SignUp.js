@@ -1,12 +1,12 @@
 import React,{ Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { register } from '../../../../actions/auth';
+import { register } from '../../../actions/auth';
 import classes from './SignUp.module.scss';
 import PropTypes from 'prop-types';
 
 
-const SignUp = ({ auth:{isAuthenticated} ,register }) => {
+const SignUp = ({ auth:{isAuthenticated, user} ,register, setAccount }) => {
 
   const [formData, setForm] = useState({
     username:'',
@@ -29,7 +29,7 @@ const SignUp = ({ auth:{isAuthenticated} ,register }) => {
     })
   }
 
-  if(isAuthenticated) return <Redirect exact to='/dashboard'/>
+  if(isAuthenticated && user) return <Redirect exact to='/chat-room'/>
 
   return (
     <Fragment>
@@ -45,7 +45,9 @@ const SignUp = ({ auth:{isAuthenticated} ,register }) => {
       }}>
         <div className={classes['form__title']}>
           <h3 className={classes['form__title--primary']}>Sign Up</h3>
-          <h4 className={classes['form__title--secondary']}>Welcome and nice to see you!</h4>
+          <h4 className={classes['form__title--secondary']}>
+            Welcome and nice to see you!
+          </h4>
         </div>
         <div className={classes['form__input']}>
           <div className={classes['input-container']}>
@@ -71,7 +73,16 @@ const SignUp = ({ auth:{isAuthenticated} ,register }) => {
 
       </form>
       <div className={classes['redirect']}>
-        <p>Already have an account? <Link exact="true" to='/auth/sign-in'>Sign in</Link></p>
+        <p>
+          Already have an account?{' '}
+        <span
+        style={{
+          cursor:'pointer',
+          color:'white'
+        }}
+        role='button'
+        onClick={()=>setAccount(true)}>Sign in</span>
+      </p>
       </div>
     </div>
 </Fragment>

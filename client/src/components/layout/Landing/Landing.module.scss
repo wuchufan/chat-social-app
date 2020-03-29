@@ -3,32 +3,36 @@
 .landing{
   height:100vh;
   width:100%;
-  // background-color: #26262b;
-    background-image:url('../../../assets/img/auth.jpg');
+  background:url('../../../assets/img/simple-codeline.svg'), rgba(#2b3137,0.8);
+
+
 }
 .container{
-  display:flex;
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas:'. title form .';
   justify-content: center;
   align-items: center;
   height:100%;
+
 }
 
 
+.title{
+  grid-area: title;
+  color:$color-white;
+  width:90%;
 
-.button{
-  display: inline-block;
-  font-size: 3rem;
-  padding:3rem;
-  border-radius:5px;
-  background-color: $color-background-primary;
-
-  &:first-child{
-    margin-right:5rem;
+  &--big{
+    font-size: 6.4rem;
+    margin-bottom: 3rem;
   }
 
-  &:visited,
-  &:link{
-    text-decoration: none;
-    color:#fff;
+  &--small{
+    font-size: 2rem;
   }
+}
+
+.form{
+  grid-area:form;
 }

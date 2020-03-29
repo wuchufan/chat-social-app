@@ -1,33 +1,69 @@
-const { addUser, removeUser, getCurrentUser } = require('./user');
+const { addUser, removeUser, getCurrentUser, leaveRoom } = require('./user');
 
 module.exports = function (io){
   io.on('connection',function(socket){
-    console.log(`user ${socket.id} has connected`);
-    console.log('[Backend] connection');
-    // io.emit('users',getCurrentUser())
+
+    console.log(`======= user ${socket.id} has connected ===== `);
+
+    console.log('[Connection] connection');
+
 
     // handle user joining room
-    socket.on('join',function(user){
-      console.log('[Backend] join');
-      const currentUser = getCurrentUser();
-      addUser(user,socket.id);
-      io.emit('users',currentUser);
+    socket.on('join',function(payload){
+
+      socket.join(payload.room);
+
+      console.log(`[Join] [${payload.user.username}] joined [${payload.room}].`);
+      console.log(`[Join] payload received as:`, payload);
+      addUser(payload.user,payload.room,socket.id);
+
+      const currentUser = getCurrentUser(payload.room);
+
+      // console.log(currentUser);
+      io.to(payload.room).emit('users',currentUser);
+      console.log(`======[Join] current User sent to front end======`);
+
     });
 
 
 
     //handle incoming messages
-    socket.on('message',function(msg){
-      io.emit('message',msg);
+    socket.on('message',function(payload){
+
+      console.log(`[Message] message recieved from [${payload.room}] as: [${payload.msg}].`);
+
+      io.to(payload.room).emit('message',payload.msg);
+
+      console.log(`==== [Message] message sent to front end ====`);
+    });
+
+    //handle leaving room
+    socket.on('leave-room',function(payload){
+
+      socket.leave(payload.room);
+
+      console.log(`=====[Leave-room] [${payload.user.username}] left room [${payload.room}]=====`);
+
+      leaveRoom(socket.id);
+
+      io.to(payload.room).emit('users',getCurrentUser(payload.room));
+
+      console.log(`=====user ${socket.id} has disconnected from [${payload.room}]=====`);
+    });
+
+    //handle adding channel
+    socket.on('addRoom',function(payload){
+      io.emit('addRoom',payload.channelName);
     });
 
 
-
-    //leave room
+    //disconnection
     socket.on('disconnect',function(){
-      removeUser(socket.id);
-      io.emit('users',getCurrentUser())
-      console.log(`user ${socket.id} has disconnected`);
+
+      const user = removeUser(socket.id);
+
+      io.to(user.room).emit('users',getCurrentUser(user.room));
     })
+
   })
 }
