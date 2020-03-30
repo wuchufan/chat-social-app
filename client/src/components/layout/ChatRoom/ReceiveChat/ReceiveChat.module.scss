@@ -1,4 +1,70 @@
+@import '../../../../sass/main';
+
 .message{
+  display:grid;
+  grid-template-columns: 5% auto 1fr;
+  grid-template-areas:
+  'avatar namedate .'
+  'avatar message message';
   font-size: 1.6rem;
   margin-bottom:1rem;
+  grid-gap:1rem;
+  align-items: end;
+  &--hover{
+      visibility: hidden;
+      opacity: 0;
+  }
+
+  &:hover {
+
+    & .message--hover{
+        visibility: visible;
+        opacity:1;
+      }
+  }
+
+
+  &__avatar{
+    grid-area:avatar;
+    border-radius:50%;
+
+  }
+  &__namedate{
+    grid-area:namedate;
+  }
+  &__name{
+    font-size: 2rem;
+    cursor:pointer;
+    margin-right:1rem;
+
+    &:hover{
+      text-decoration: underline;
+    }
+
+  }
+
+  &__date{
+    grid-area:date;
+    font-size: 1.2rem;
+    color:$color-text;
+
+
+
+  }
+
+  &__message{
+    grid-area:message;
+    align-self: stretch;
+
+  }
+
+
+}
+
+.avatar{
+  display:block;
+  width:50px;
+  height:50px;
+  object-fit: cover;
+  border-radius:inherit;
 }

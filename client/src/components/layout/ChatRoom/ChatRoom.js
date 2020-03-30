@@ -8,22 +8,17 @@ import NavBar from './NavBar/NavBar';
 import User from './User/User';
 import Channel from './Channel/Channel';
 import io from "socket.io-client";
-
+import getTimeDifference from '../../../uti/getTimeDifference';
 
 let socket;
-
-// if(localStorage.token){
-//   setAuthState(localStorage.token);
-// }
-
 
 const ChatRoom = ({
   auth:{user}
 
 }) => {
 
-
   const [message, setMessage] = useState('');
+  //all the messages that have posted
   const [receiveMsgs, setReceiveMsgs] = useState([]);
   const [rooms, updateRooms] = useState(['main','test']);
   const [room, setRoom] = useState('main');
@@ -36,7 +31,7 @@ const ChatRoom = ({
     if(node){
         node.scrollTop = node.scrollHeight;
     }
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[receiveMsgs])
 
 
@@ -47,13 +42,14 @@ const ChatRoom = ({
   useEffect(()=>{
 
     socket = io(ENDPOINT);
-    console.log(user);
     if(user)socket.emit('join',{user, room});
 
 
     return () =>{
       socket.disconnect();
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[ENDPOINT]);
 
   useEffect(()=>{
@@ -61,7 +57,12 @@ const ChatRoom = ({
     //update message rendering
     socket.on('message',(msg)=>{
 
-      setReceiveMsgs(receiveMsgs=> [...receiveMsgs, msg])
+      setReceiveMsgs(receiveMsgs=> {
+        if(receiveMsgs.length){
+          msg.isFirst = false
+        }
+        return[...receiveMsgs, msg]
+      })
     });
 
     //get current users
@@ -74,14 +75,33 @@ const ChatRoom = ({
     socket.on('addRoom',(roomName)=>{
       updateRooms(rooms => [...rooms, roomName]);
     });
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
 
   const sendMessage = (e) =>{
     e.preventDefault();
+    let showFull = true;
+    let isFirst = true;
+    const timeInfo = new Date();
+    if(receiveMsgs.length){
+      const lastMessage = receiveMsgs.slice(-1)[0];
+      const timeDifference = getTimeDifference(new Date(lastMessage.timeInfo),timeInfo);
+      showFull = !(user._id === lastMessage.user._id && timeDifference < 600000); //600000 = 10 minutes
+      isFirst= false;
+
+    }
+
+
     if(message){
-      socket.emit('message',{msg:message,room});
+      socket.emit('message',{
+        msg:message,
+        room,
+        timeInfo,
+        user,
+        showFull,
+        isFirst
+      });
 
       setMessage('');
     }
@@ -94,7 +114,7 @@ const ChatRoom = ({
 
         <section className={classes['container']}>
          <nav className={classes['items']+' '+classes['navbar']}>
-           
+
            <NavBar/>
          </nav>
          <div className={classes['items']+' '+ classes['header']}>
@@ -116,10 +136,15 @@ const ChatRoom = ({
              socket={socket}/>
          </div>
          <div className={classes['items']+' '+classes['chat-room']} ref={windowRef}>
-           {receiveMsgs.map((msg,i)=><ReceiveChat user={user} key={i} receiveMsg={msg}/>)}
+
+           {receiveMsgs.map((msg,i)=>{
+            //for testing
+      
+             return (<ReceiveChat key={i} isFirstForMe={receiveMsgs.length === 1} receiveMsg={msg}/>)})}
 
          </div>
          <div className={classes['items']+' '+classes['chat-bar']}>
+           {/* this part needs to be optimized, every word typed is rerendering the parent element */}
            <ChatBar message={message} setMessage={setMessage} sendMessage={sendMessage} />
          </div>
          <div className={classes['items']+' '+classes['member-bar']}>

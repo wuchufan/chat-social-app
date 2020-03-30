@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import classes from './ChatBar.module.scss';
 import PropTypes from 'prop-types';
 
 const ChatBar = ({message, setMessage, sendMessage}) => {
-
+  const [localMessage, setlocalMessage] = useState('');
   const onChange = (e) =>{
     setMessage(e.target.value);
   }

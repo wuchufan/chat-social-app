@@ -6,7 +6,7 @@ $navbar-padding:2rem;
   height:100vh;
   width:100%;
   grid-template-columns:4.5% 13% 1fr 20%;
-  grid-template-rows: 10% 1fr 10%;
+  grid-template-rows: 8% 1fr 10%;
   grid-template-areas:
   "navbar channel header header"
   "navbar channel chat-room member-bar"
@@ -31,6 +31,7 @@ $navbar-padding:2rem;
 
 .header{
   grid-area:header;
+  padding:2rem;
   background-color:$color-background-primary;
   border-bottom:1px solid $color-background-tertiary;
 
