@@ -10,6 +10,9 @@
   margin-bottom:1rem;
   grid-gap:1rem;
   align-items: end;
+
+
+
   &--hover{
       visibility: hidden;
       opacity: 0;
@@ -48,6 +51,12 @@
     font-size: 1.2rem;
     color:$color-text;
 
+      // not selectable
+    -moz-user-select: -moz-none;
+     -khtml-user-select: none;
+     -webkit-user-select: none;
+     -o-user-select: none;
+     user-select: none;
 
 
   }

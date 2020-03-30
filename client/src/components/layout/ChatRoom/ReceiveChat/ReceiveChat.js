@@ -21,10 +21,10 @@ const ReceiveChat = ({
   let renderFull = null;
   if(showFull){
     renderFull = (<Fragment>
-        <div role='message-avatar' className={classes['message__avatar']}>
-              <img className={classes['avatar']} src={defaultImg}/>
+        <div className={classes['message__avatar']}>
+              <img className={classes['avatar']} src={defaultImg} alt='avatar'/>
             </div>
-            <div role='message-namedate' className={classes['message__namedate']}>
+            <div className={classes['message__namedate']}>
                 <span className={classes['message__name']}>
                    {username}
                 </span>
@@ -34,14 +34,14 @@ const ReceiveChat = ({
             </div>
       </Fragment>)
   }
-  console.log(123);
+
   return (
     <div style={!showFull ? {
       gridTemplateAreas:"'date message'",
       gridTemplateColumns: '5% auto'
     }: !isFirst ? {
       marginTop:5+'rem'
-    }: null} role='message-container' className={classes['message']}>
+    }: null} className={classes['message']}>
 
       {renderFull}
 

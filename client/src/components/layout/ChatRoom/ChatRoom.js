@@ -17,7 +17,7 @@ const ChatRoom = ({
 
 }) => {
 
-  const [message, setMessage] = useState('');
+  // const [message, setMessage] = useState('');
   //all the messages that have posted
   const [receiveMsgs, setReceiveMsgs] = useState([]);
   const [rooms, updateRooms] = useState(['main','test']);
@@ -79,8 +79,8 @@ const ChatRoom = ({
   },[]);
 
 
-  const sendMessage = (e) =>{
-    e.preventDefault();
+  const sendMessage = (message) =>{
+
     let showFull = true;
     let isFirst = true;
     const timeInfo = new Date();
@@ -92,8 +92,8 @@ const ChatRoom = ({
 
     }
 
-
     if(message){
+
       socket.emit('message',{
         msg:message,
         room,
@@ -103,9 +103,9 @@ const ChatRoom = ({
         isFirst
       });
 
-      setMessage('');
     }
   };
+
 
 
   return (
@@ -139,13 +139,12 @@ const ChatRoom = ({
 
            {receiveMsgs.map((msg,i)=>{
             //for testing
-      
+
              return (<ReceiveChat key={i} isFirstForMe={receiveMsgs.length === 1} receiveMsg={msg}/>)})}
 
          </div>
          <div className={classes['items']+' '+classes['chat-bar']}>
-           {/* this part needs to be optimized, every word typed is rerendering the parent element */}
-           <ChatBar message={message} setMessage={setMessage} sendMessage={sendMessage} />
+           <ChatBar sendMessage={sendMessage} />
          </div>
          <div className={classes['items']+' '+classes['member-bar']}>
            Members:

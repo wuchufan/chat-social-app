@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './NavBar.module.scss';
-import logoutIcon from '../../../../assets/img/svg/logout.svg';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { logout } from '../../../../actions/auth';

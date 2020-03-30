@@ -2,18 +2,28 @@ import React, {useState} from 'react';
 import classes from './ChatBar.module.scss';
 import PropTypes from 'prop-types';
 
-const ChatBar = ({message, setMessage, sendMessage}) => {
-  const [localMessage, setlocalMessage] = useState('');
+const ChatBar = ({sendMessage}) => {
+  const [localMessage, setLocalMessage] = useState('');
+
   const onChange = (e) =>{
-    setMessage(e.target.value);
+    setLocalMessage(e.target.value);
+
   }
+  const onKeyPress = (e)=>{
+    if(e.key === 'Enter'){
+      sendMessage(localMessage);
+      setLocalMessage('');
+    }
+  }
+
+
   return (
     <input
       type="text"
       name='message'
-      value={message}
+      value={localMessage}
       onChange={(e)=>onChange(e)}
-      onKeyPress={e => e.key === 'Enter' && sendMessage(e)}
+      onKeyPress={e => onKeyPress(e)}
       className={classes['type-block']}
       autoComplete='off'
     />

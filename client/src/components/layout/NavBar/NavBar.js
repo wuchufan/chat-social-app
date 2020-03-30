@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import classes from './NavBar.module.scss';
 import { logout } from '../../../actions/auth';
@@ -9,7 +9,7 @@ import { logout } from '../../../actions/auth';
 
 
 const NavBar = ({auth:{ isAuthenticated, loading, user }, logout, history})=>{
-  console.log(history);
+
   const guestNav = (
       <Fragment>
           <NavLink activeClassName={classes['active']} to='/' className={classes['navbar__item']}>
