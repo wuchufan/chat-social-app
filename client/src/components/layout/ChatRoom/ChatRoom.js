@@ -20,8 +20,8 @@ const ChatRoom = ({
   // const [message, setMessage] = useState('');
   //all the messages that have posted
   const [receiveMsgs, setReceiveMsgs] = useState([]);
-  const [rooms, updateRooms] = useState(['main','test']);
-  const [room, setRoom] = useState('main');
+  const [rooms, updateRooms] = useState(['Main','Meeting room']);
+  const [room, setRoom] = useState('Main');
   const [users, updateUsers] = useState([]);
 
   //scroll to bottom functionality
@@ -117,11 +117,20 @@ const ChatRoom = ({
 
            <NavBar/>
          </nav>
+
          <div className={classes['items']+' '+ classes['header']}>
-           Welcome to Chat Room
+           #{' '}{room}
          </div>
+
          <div className={classes['items']+' '+classes['channel']}>
-          <div>{rooms.map((roomElement,i)=>
+
+           <div className={classes['items--sub']+' '+ classes['channel__title']}>
+
+            <i className="fas fa-comments"></i>
+            <span style={{marginLeft:'1rem'}}>Chat Room</span>
+
+           </div>
+          <div className={classes['items--sub']+' '+ classes['channel__name']}>{rooms.map((roomElement,i)=>
             <Channel key={i}
             user={user}
             room={roomElement}
@@ -130,25 +139,42 @@ const ChatRoom = ({
             socket={socket}
             />)}
          </div>
+         <div className={classes['items--sub']+' '+ classes['channel__add-channel']}>
+
            <AddChannel
              updateRooms={updateRooms}
              rooms={rooms}
              socket={socket}/>
+             </div>
+
          </div>
+
          <div className={classes['items']+' '+classes['chat-room']} ref={windowRef}>
 
            {receiveMsgs.map((msg,i)=>{
             //for testing
-
+            console.log(msg);
              return (<ReceiveChat key={i} isFirstForMe={receiveMsgs.length === 1} receiveMsg={msg}/>)})}
 
          </div>
+
          <div className={classes['items']+' '+classes['chat-bar']}>
            <ChatBar sendMessage={sendMessage} />
          </div>
+
          <div className={classes['items']+' '+classes['member-bar']}>
-           Members:
+
+           <span style={{
+             display:'inline-block',
+             color:'#8e9297',
+             fontSize:'1.2rem',
+             lineHeight:1.6,
+             textTransform:'uppercase',
+             marginBottom:'2rem'
+           }}><i className="fas fa-user-friends"></i>{' '}Online - {users.length}
+         </span>
            {users.map((user)=><User key={user._id} user={user} />)}
+
          </div>
        </section>
      </Fragment>

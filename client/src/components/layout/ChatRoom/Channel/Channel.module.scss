@@ -1,3 +1,15 @@
+$color-channel-name:#8e9297;
+
 .channel{
+  padding:1rem;
+  font-size: 2rem;
+  color:$color-channel-name;
   cursor:pointer;
+  margin-bottom: 1rem;
+
+  &:hover{
+    background-color:#36393f;
+    color:#fff;
+    border-radius: 5px;
+  }
 }

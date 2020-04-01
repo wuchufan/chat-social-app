@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React,{Fragment, useState } from 'react';
 
 
 const AddChannel = ({updateRooms, rooms, socket}) => {
@@ -7,7 +7,7 @@ const AddChannel = ({updateRooms, rooms, socket}) => {
 
 
   return (
-    <div>
+  <Fragment>
       <input type='text' value={channelName} name='channelName' onChange={e=>{
         setChannel(e.target.value);
       }}/>
@@ -15,8 +15,8 @@ const AddChannel = ({updateRooms, rooms, socket}) => {
         socket.emit('addRoom',{ channelName })
         // updateRooms([...rooms,channelName]);
         setChannel('')
-      }}>Add channel</button>
-    </div>
+      }}>Add channel</button> 
+</Fragment>
   );
 }
 

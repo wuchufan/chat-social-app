@@ -1,0 +1,36 @@
+@import '../../../../sass/main';
+
+$color-member-name:#8e9297;
+
+.container{
+  display:grid;
+  grid-template-columns:50px auto;
+  grid-column-gap: 1.5rem;
+  grid-template-areas:
+  "avatar username"
+  "avatar room";
+
+}
+
+.avatar{
+  grid-area:avatar;
+  border-radius: 50%;
+  align-self: center;
+  &__img{
+    @include avatar;
+  }
+}
+
+.username{
+  grid-area:username;
+  font-size: 1.6rem;
+  color:$color-member-name;
+  align-self: end;
+}
+
+.room{
+  grid-area:room;
+  font-size: 1.6rem;
+
+  color: $color-member-name;
+}

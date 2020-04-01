@@ -17,8 +17,12 @@ const Channel = ({
         setRoom(room);
       }}
       className={classes['channel']}
-      style={(room === currentRoom) ? {backgroundColor:'yellowgreen'} : null} >
-      {room}
+      style={(room === currentRoom) ? {
+        backgroundColor:'#36393f',
+        color:'white',
+        borderRadius:'5px'
+      } : null} >
+      <i class="fas fa-arrow-circle-right"></i>{' '}{room}
     </div>
   );
 }

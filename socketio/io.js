@@ -32,7 +32,7 @@ module.exports = function (io){
 
       console.log(`[Message] message recieved from [${payload.room}] as: [${payload.msg}].`);
 
-      io.to(payload.room).emit('message',payload.msg);
+      io.to(payload.room).emit('message',payload);
 
       console.log(`==== [Message] message sent to front end ====`);
     });
@@ -61,8 +61,12 @@ module.exports = function (io){
     socket.on('disconnect',function(){
 
       const user = removeUser(socket.id);
+      if(user){
+                io.to(user.room).emit('users',getCurrentUser(user.room));
+      } else{
+        console.log('ERROR: No user to remove');
+      }
 
-      io.to(user.room).emit('users',getCurrentUser(user.room));
     })
 
   })
