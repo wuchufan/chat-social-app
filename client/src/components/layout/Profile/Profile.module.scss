@@ -1,0 +1,28 @@
+@import '../../../sass/main';
+.container{
+  padding-top:$push-down-padding;
+  display:grid;
+  grid-template-columns: auto 2fr;
+  grid-template-areas:'avatar profile ';
+  justify-content: center;
+  max-width:$max-width;
+  margin: 0 auto;
+  grid-gap:10rem;
+}
+
+.avatar{
+  grid-area:avatar;
+
+
+  &__img{
+    display: block;
+    width:26rem;
+    background-color:#7289da;
+    margin-bottom: 2rem;
+  }
+}
+
+.profile{
+  grid-area:profile;
+  width:100%;
+}

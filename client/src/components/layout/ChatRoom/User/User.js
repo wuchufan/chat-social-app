@@ -1,5 +1,5 @@
 import React from 'react';
-import defaultImg from '../../../../assets/img/bili-test.jpg';
+import defaultImg from '../../../../assets/img/default.jpg';
 import classes from './User.module.scss';
 
 const User = ({user:{

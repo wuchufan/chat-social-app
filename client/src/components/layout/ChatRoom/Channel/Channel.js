@@ -22,7 +22,7 @@ const Channel = ({
         color:'white',
         borderRadius:'5px'
       } : null} >
-      <i class="fas fa-arrow-circle-right"></i>{' '}{room}
+      <i className="fas fa-arrow-circle-right"></i>{' '}{room}
     </div>
   );
 }

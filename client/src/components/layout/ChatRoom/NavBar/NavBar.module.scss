@@ -7,6 +7,7 @@ $transition:all 0.2s ease;
   display: flex;
   justify-content: center;
   width:100%;
+  margin-bottom: 2rem;
 }
 .navbar__item{
 
@@ -22,7 +23,7 @@ $transition:all 0.2s ease;
   transition: $transition;
 }
 
-.logout{
+.button__outer{
   display:flex;
   justify-content: center;
   align-items: center;
@@ -31,6 +32,7 @@ $transition:all 0.2s ease;
   width:4.8rem;
   border-radius: 50%;
   transition: $transition;
+
 
   &::before{
     content:'';
@@ -44,6 +46,8 @@ $transition:all 0.2s ease;
     transition:$transition;
   }
 
+
+
   &:hover{
 
     border-radius: 25%;
@@ -52,7 +56,62 @@ $transition:all 0.2s ease;
     }
     & .icon{
       color:$color-white;
+
+    }
+    & .rotate{
       transform: rotate(90deg);
     }
+    & .tool-tip::before,
+    & .tool-tip::after{
+        opacity:1;
+    }
   }
+}
+
+.tool-tip{
+
+  &::before{
+    content:"";
+    position:absolute;
+    display: flex;
+    height:3rem;
+    width:6rem;
+    font-size: 1.2rem;
+    background-color:black;
+    color:$color-white;
+    top:50%;
+    left:130%;
+    transform:translate(-50%,-50%);
+
+    transition:all 0.2s ease;
+    justify-content: center;
+    align-items: center;
+    opacity:0;
+    border-radius:5px;
+
+  }
+
+  &::after{
+    content:'';
+    position:absolute;
+    background-color: black;
+    top:50%;
+    left:92%;
+    height:1rem;
+    width:1rem;
+    transform-origin: center;
+    transform:rotate(45deg) translate(-50%,-25%);
+    opacity:0;
+    transition:all 0.2s ease;
+
+  }
+
+  &--logout::before{
+    content:'Logout';
+  }
+
+  &--profile::before{
+    content:'Profile';
+  }
+
 }

@@ -114,8 +114,8 @@ const ChatRoom = ({
 
         <section className={classes['container']}>
          <nav className={classes['items']+' '+classes['navbar']}>
-
            <NavBar/>
+
          </nav>
 
          <div className={classes['items']+' '+ classes['header']}>
@@ -124,13 +124,13 @@ const ChatRoom = ({
 
          <div className={classes['items']+' '+classes['channel']}>
 
-           <div className={classes['items--sub']+' '+ classes['channel__title']}>
+           <div className={ classes['channel__title']}>
 
             <i className="fas fa-comments"></i>
             <span style={{marginLeft:'1rem'}}>Chat Room</span>
 
            </div>
-          <div className={classes['items--sub']+' '+ classes['channel__name']}>{rooms.map((roomElement,i)=>
+          <div className={ classes['channel__name']}>{rooms.map((roomElement,i)=>
             <Channel key={i}
             user={user}
             room={roomElement}
@@ -139,13 +139,13 @@ const ChatRoom = ({
             socket={socket}
             />)}
          </div>
-         <div className={classes['items--sub']+' '+ classes['channel__add-channel']}>
+         <div className={classes['channel__add-channel']}>
 
            <AddChannel
              updateRooms={updateRooms}
              rooms={rooms}
              socket={socket}/>
-             </div>
+           </div>
 
          </div>
 
@@ -153,7 +153,6 @@ const ChatRoom = ({
 
            {receiveMsgs.map((msg,i)=>{
             //for testing
-            console.log(msg);
              return (<ReceiveChat key={i} isFirstForMe={receiveMsgs.length === 1} receiveMsg={msg}/>)})}
 
          </div>

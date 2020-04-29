@@ -5,7 +5,9 @@
    LOGIN_FAIL,
    USER_LOADED,
    AUTH_ERROR,
-   LOG_OUT
+   LOG_OUT,
+   USERNAME_EDIT_SUCCESS,
+   USERNAME_EDIT_FAIL
  } from '../actions/types';
 
 
@@ -78,6 +80,21 @@ export default function(state = initialState, action){
       errMessage:null,
       user:null
     }
+
+    case USERNAME_EDIT_SUCCESS:
+    return{
+      ...state,
+      loading:false,
+      user:payload
+    }
+
+    case USERNAME_EDIT_FAIL:
+    return {
+      ...state,
+      loading:false,
+      errMessage:payload
+    }
+
     default:
     return state
   }

@@ -6,12 +6,29 @@ import { logout } from '../../../../actions/auth';
 
 const NavBar = ({ logout }) => {
   return (
-      <ul className={classes['container']}>
-        <NavLink to='/' onClick={logout} className={classes['navbar__item']}>
-        <span role='button' className={classes['logout']}>
-            <i className={`fas fa-sign-out-alt ${classes['icon']}`}></i>
+      <ul style={{
+        width:'100%'
+      }}>
+        <li className={classes['container']}>
+
+        <NavLink to='/profile' className={classes['navbar__item']}>
+        <span role='button' className={classes['button__outer']}>
+
+          <span className={classes['tool-tip']+' '+classes['tool-tip--profile']}></span>
+            <i className={`far fa-id-card ${classes['icon']}`}></i>
         </span>
         </NavLink>
+        </li>
+
+        <li className={classes['container']}>
+
+        <NavLink to='/' onClick={logout} className={classes['navbar__item']}>
+        <span role='button' className={classes['button__outer']}>
+          <span className={classes['tool-tip']+' '+ classes['tool-tip--logout']}></span>
+            <i className={`fas fa-sign-out-alt ${classes['icon']} ${classes['rotate']}`}></i>
+        </span>
+        </NavLink>
+        </li>
       </ul>
   );
 }

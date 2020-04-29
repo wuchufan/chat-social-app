@@ -17,9 +17,6 @@ $navbar-padding:2rem;
   font-size: 3rem;
   color:#fff;
 
-  &--sub{
-    padding:$navbar-padding;
-  }
 }
 .navbar{
   display:flex;
@@ -31,6 +28,7 @@ $navbar-padding:2rem;
   width:calc(100% + #{$navbar-padding});
   padding:$navbar-padding;
   padding-left:0;
+
 }
 
 .header{
@@ -51,6 +49,7 @@ $navbar-padding:2rem;
   background-color:$color-background-secondary;
   border-top-left-radius: 20px;
 
+
   &__title{
     display:flex;
     grid-row: 2 / 1;
@@ -59,15 +58,17 @@ $navbar-padding:2rem;
     flex-direction: row;
     font-size: 2rem;
     height:100%;
-
+    padding:2rem;
   }
   &__name{
     grid-row:2 / 3;
+    padding:2rem;
   }
 
   &__add-channel{
     grid-row:3 / 4;
-    padding:1.5rem;
+    padding:2rem;
+
   }
 }
 
@@ -112,8 +113,4 @@ $navbar-padding:2rem;
   grid-area:member-bar;
   background-color:$color-background-secondary;
   padding:0 2rem;
-}
-
-.test{
-  color:black;
 }

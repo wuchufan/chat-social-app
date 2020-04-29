@@ -9,11 +9,13 @@
 }
 .container{
   display:grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-areas:'. title form .';
+  grid-template-columns: 1fr .7fr;
+  grid-template-areas:'title form';
   justify-content: center;
   align-items: center;
   height:100%;
+  max-width:$max-width;
+  margin:0 auto;
 
 }
 

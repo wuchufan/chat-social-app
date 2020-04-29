@@ -26,11 +26,14 @@ const NavBar = ({auth:{ isAuthenticated, loading, user }, logout, history})=>{
           <NavLink to='/chat-room' className={classes['navbar__item']}>
             Chat Room
           </NavLink>
-          <NavLink to='/dashboard' className={classes['navbar__item']}>
-            dashboard
+          <NavLink to='/profile' className={classes['navbar__item']}>
+            Profile
+          </NavLink>
+          <NavLink to='/people' className={classes['navbar__item']}>
+            People
           </NavLink>
         <NavLink to='/' onClick={logout} className={classes['navbar__item']}>
-          log out
+          Logout
         </NavLink>
         </Fragment>)
 

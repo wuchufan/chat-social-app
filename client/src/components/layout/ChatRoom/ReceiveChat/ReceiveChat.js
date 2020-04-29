@@ -1,5 +1,5 @@
 import React,{ Fragment } from 'react';
-import defaultImg from '../../../../assets/img/bili-test.jpg';
+import defaultImg from '../../../../assets/img/default.jpg';
 import Moment from 'react-moment';
 import classes from './ReceiveChat.module.scss';
 
