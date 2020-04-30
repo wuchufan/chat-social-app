@@ -13,7 +13,7 @@ router.get('/me', auth, async (req,res)=>{
 
     let profile = await Profile.findOne({user:req.user.id});
     if(!profile) return res.status(400).json({msg:'no profile is found'});
-    console.log(profile);
+    // console.log(profile);
     res.json(profile)
 
   } catch(error){
@@ -48,7 +48,7 @@ router.post('/', auth, async (req,res)=>{
   try{
     let profile = await Profile.findOne({user:req.user.id});
     if(profile){
-      console.log(profileData);
+      // console.log(profileData);
       profile = await Profile.findOneAndUpdate(
         {user:req.user.id},
         {$set:profileData},

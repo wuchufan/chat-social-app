@@ -14,7 +14,7 @@ module.exports = function (io){
       socket.join(payload.room);
 
       console.log(`[Join] [${payload.user.username}] joined [${payload.room}].`);
-      console.log(`[Join] payload received as:`, payload);
+      // console.log(`[Join] payload received as:`, payload);
       addUser(payload.user,payload.room,socket.id);
 
       const currentUser = getCurrentUser(payload.room);
@@ -30,7 +30,7 @@ module.exports = function (io){
     //handle incoming messages
     socket.on('message',function(payload){
 
-      console.log(`[Message] message recieved from [${payload.room}] as: [${payload.msg}].`);
+      // console.log(`[Message] message recieved from [${payload.room}] as: [${payload.msg}].`);
 
       io.to(payload.room).emit('message',payload);
 
