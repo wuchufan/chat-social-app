@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Operations = ({profile:{profile}}) => {
-  console.log(profile);
   return (
     <div className={classes['container']}>
     <Link className={classes['edit-profile']} exact='true' to='/profile/edit-profile' >
