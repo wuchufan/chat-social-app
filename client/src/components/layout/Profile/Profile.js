@@ -36,9 +36,15 @@ const Profile = ({
           <Operations/>
 
         </div>
-        <div className={classes['profile']}>
+        <div style={profile ? null : {alignSelf:'center'}} className={classes['profile']}>
           {loading ? <Spinner/> :
-            <Info profile={profile} username={username}/>
+          ( profile ? <Info profile={profile} username={username}/> :
+          <h1 style={{
+            fontSize:'4rem',
+            color:'#17a2b8',
+  
+          }}>Greetings, <span style={{color:'#24292e'}}>{username}</span>.<br/> It seems like you don't have a profile yet. <br/> You can click 'Create Profile' to create one!</h1>)
+
           }
 
         </div>

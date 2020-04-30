@@ -1,4 +1,4 @@
-import React,{ Fragment } from 'react';
+import React, {Fragment} from 'react';
 import classes from './Info.module.scss'
 
 const Info = ({
@@ -10,7 +10,7 @@ const Info = ({
     game
   }
 }) => {
-  console.log(social);
+
   return (<section className={classes['container']}>
     {/* BASIC INFO */}
     {
@@ -28,11 +28,11 @@ const Info = ({
           }
 
           {
-            age && <p className={classes['field']}>Age:{' '}
+            age || age === 0 ? <p className={classes['field']}>Age:{' '}
                 <span className={classes['content']}>
                   {age}
                 </span>
-              </p>
+              </p> : null
           }
 
         </div>
@@ -48,17 +48,18 @@ const Info = ({
         education
           ? <Fragment>
               {
-              education.school &&
-              <p className={classes['field']}>
+                education.school && <p className={classes['field']}>
 
-                {education.school}
-              </p>}
+                    {education.school}
+                  </p>
+              }
 
-            {  education.major &&
-              <p className={classes['field']}>
-                Field Of Study:{' '}
-                <span className={classes['content']}>{education.major}</span>
-              </p>}
+              {
+                education.major && <p className={classes['field']}>
+                    Field Of Study:{' '}
+                    <span className={classes['content']}>{education.major}</span>
+                  </p>
+              }
             </Fragment>
           : <p className={classes['field']}>Profile not added</p>
       }
@@ -97,34 +98,36 @@ const Info = ({
     }
 
     {/* SOCIAL */}
-      <div className={classes['social-media'] + ' ' + classes['item']}>
-          <h1 className={classes['title']}>
-            Social media
-          </h1>
+    <div className={classes['social-media'] + ' ' + classes['item']}>
+      <h1 className={classes['title']}>
+        Social media
+      </h1>
 
-          {social ? <Fragment>
-            {
-            social.github && <p className={classes['field']}>
-                github:{' '}
-                <span className={classes['content']}>
-                  {social.github}
-                </span>
+      {
+        social
+          ? <Fragment>
+              {
+                social.github && <p className={classes['field']}>
+                    github:{' '}
+                    <span className={classes['content']}>
+                      {social.github}
+                    </span>
 
-              </p>
-            }
-            {
-            social.facebook && <p className={classes['field']}>
-                facebook:{' '}
-                <span className={classes['content']}>
-                  {social.facebook}
-                </span>
-              </p>
-            }
-              </Fragment>
-          : <p className={classes['field']}>Profile not added</p>}
+                  </p>
+              }
+              {
+                social.facebook && <p className={classes['field']}>
+                    facebook:{' '}
+                    <span className={classes['content']}>
+                      {social.facebook}
+                    </span>
+                  </p>
+              }
+            </Fragment>
+          : <p className={classes['field']}>Profile not added</p>
+      }
 
-        </div>
-
+    </div>
 
   </section>);
 }
