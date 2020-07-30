@@ -7,13 +7,16 @@
    AUTH_ERROR,
    LOG_OUT,
    USERNAME_EDIT_SUCCESS,
-   USERNAME_EDIT_FAIL
+   USERNAME_EDIT_FAIL,
+   CLEAR_ERR_MESSAGE,
+   AUTH_LOADING
  } from '../actions/types';
 
 
 const initialState = {
   isAuthenticated:null,
   loading:true,
+  authLoading:null,
   errMessage:null,
   user:null
 }
@@ -40,7 +43,8 @@ export default function(state = initialState, action){
       ...state,
       isAuthenticated:true,
       loading:false,
-      errMessage:null
+      errMessage:null,
+      authLoading:false
     }
 
     case LOGIN_SUCCESS:
@@ -50,8 +54,10 @@ export default function(state = initialState, action){
       ...state,
       isAuthenticated:true,
       loading:false,
-      errMessage:null
+      errMessage:null,
+      authLoading:false
     }
+
 
     case REGISTER_FAIL:
     localStorage.removeItem('token');
@@ -59,7 +65,8 @@ export default function(state = initialState, action){
       ...state,
       isAuthenticated:false,
       errMessage:payload,
-      loading:false
+      loading:false,
+      authLoading:false
     }
 
     case LOGIN_FAIL:
@@ -68,7 +75,8 @@ export default function(state = initialState, action){
       ...state,
       isAuthenticated:false,
       loading:false,
-      errMessage:payload
+      errMessage:payload,
+      authLoading:false
     }
 
     case LOG_OUT:
@@ -93,6 +101,18 @@ export default function(state = initialState, action){
       ...state,
       loading:false,
       errMessage:payload
+    }
+
+    case CLEAR_ERR_MESSAGE:
+    return {
+      ...state,
+      errMessage:null
+    }
+
+    case AUTH_LOADING:
+    return {
+      ...state,
+      authLoading:true
     }
 
     default:

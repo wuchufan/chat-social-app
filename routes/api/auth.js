@@ -32,11 +32,11 @@ router.post('/',async (req,res)=>{
   try{
     //check if user exists
     const user = await User.findOne({email});
-    if(!user) return res.status(403).json({msg:'username or password error'});
+    if(!user) return res.status(403).json({msg:'Username or password is incorrect'});
 
     //check if password matches
     const isMatch = await bcrypt.compare( password , user.password);
-    if (!isMatch) return res.status(403).json({msg:'username or password error'});
+    if (!isMatch) return res.status(403).json({msg:'Username or password is incorrect'});
 
     //return jwt
 

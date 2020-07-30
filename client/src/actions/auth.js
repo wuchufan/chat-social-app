@@ -7,7 +7,9 @@ import {
   LOGIN_FAIL,
   USER_LOADED,
   AUTH_ERROR,
-  LOG_OUT
+  LOG_OUT,
+  CLEAR_ERR_MESSAGE,
+  AUTH_LOADING
 } from './types';
 
 
@@ -44,15 +46,16 @@ export const register = ({username, email, password}) => async dispatch =>{
     }
   }
   try{
-
+    dispatch(isAuthenticating());
     const res = await axios.post('/api/user',{username,email,password},config);
+
     dispatch({
       type:REGISTER_SUCCESS,
       payload:res.data
     });
       dispatch(loadUser());
   }catch(error){
-    console.log(error);
+
     dispatch({
       type:REGISTER_FAIL,
       payload:error.response.data.msg
@@ -68,16 +71,14 @@ export const login = ({email, password}) => async dispatch =>{
     }
   }
   try{
-
+    dispatch(isAuthenticating());
     const res = await axios.post('/api/auth',{email,password},config);
-
-
 
     dispatch({
       type:LOGIN_SUCCESS,
       payload:res.data
     });
-      dispatch(loadUser());
+    dispatch(loadUser());
 
   }catch(error){
 
@@ -94,4 +95,22 @@ export const logout = () => dispatch =>{
   dispatch({
     type:LOG_OUT
   });
+}
+
+//check if authenticating
+export const isAuthenticating = () => dispatch =>{
+
+  dispatch({
+    type:AUTH_LOADING
+  })
+}
+
+
+
+//clear error messages
+
+export const clearErrMessage = () => dispatch =>{
+  dispatch({
+    type:CLEAR_ERR_MESSAGE
+  })
 }
