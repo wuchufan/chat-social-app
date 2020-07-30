@@ -5,12 +5,10 @@ import PropTypes from 'prop-types';
 
 
 const AuthButton = ({children,loading}) => {
-     // const img = new Image();
-     // img.src = spinner;
 
   return (
     <button className={cls['submit-button']} type='submit'>
-      {loading ? <img className={cls['auth-spinner']} src={spinner}/>: children}
+      {loading ? <img className={cls['auth-spinner']} alt='spinner' src={spinner}/>: children}
     </button>
   );
 }

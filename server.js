@@ -18,7 +18,7 @@ connectIo(io);
 //middleware to parse body
 app.use(express.json({extended: false }));
 
-
+app.use('/api/visit',require('./routes/api/visit'));
 app.use('/api/auth',require('./routes/api/auth'));
 app.use('/api/profile',require('./routes/api/profile'));
 app.use('/api/user',require('./routes/api/user'));

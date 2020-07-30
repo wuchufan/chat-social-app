@@ -5,7 +5,6 @@ import Landing from './components/layout/Landing/Landing';
 import Profile from './components/layout/Profile/Profile';
 import EditProfile from './components/layout/Profile/EditProfile/EditProfile';
 
-// import Auth from './components/layout/Auth/Auth';
 import ChatRoom from './components/layout/ChatRoom/ChatRoom';
 import { loadUser } from './actions/auth';
 import setAuthState from './uti/setAuthState';
@@ -14,6 +13,9 @@ import setAuthState from './uti/setAuthState';
 import store from './store';
 import { Provider } from 'react-redux';
 
+//increase visitor count
+import increaseVisitCount from './uti/increaseVisitCount';
+
 import './App.module.scss';
 
 if(localStorage.token){
@@ -21,8 +23,13 @@ if(localStorage.token){
 }
 
 const App = () => {
+
   useEffect(()=>{
       store.dispatch(loadUser());
+  },[]);
+
+  useEffect(()=>{
+    increaseVisitCount();
   },[]);
 
   return (

@@ -8,7 +8,7 @@ import SignUp from '../SignUp/SignUp';
 import PropTypes from 'prop-types';
 
 const Landing = ({ auth:{ isAuthenticated,user }}) =>{
-  const [hasAccount, setAccount] = useState(false)
+  const [hasAccount, setAccount] = useState(false);
 
 
   if(isAuthenticated && user) return <Redirect to='/chat-room'/>

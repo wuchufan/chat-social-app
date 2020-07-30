@@ -31,7 +31,7 @@ const Profile = ({
       <NavBar/>
       <section className={classes['container']}>
         <div className={classes['avatar']}>
-          <img src={defaultImg} className={classes['avatar__img']}/>
+          <img alt='avt' src={defaultImg} className={classes['avatar__img']}/>
 
           <Operations/>
 
@@ -42,7 +42,7 @@ const Profile = ({
           <h1 style={{
             fontSize:'4rem',
             color:'#17a2b8',
-  
+
           }}>Greetings, <span style={{color:'#24292e'}}>{username}</span>.<br/> It seems like you don't have a profile yet. <br/> You can click 'Create Profile' to create one!</h1>)
 
           }

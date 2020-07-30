@@ -47,7 +47,7 @@ export const register = ({username, email, password}) => async dispatch =>{
   }
   try{
     dispatch(isAuthenticating());
-    const res = await axios.post('/api/user',{username,email,password},config);
+    const res = await axios.post('/api/auth',{username,email,password},config);
 
     dispatch({
       type:REGISTER_SUCCESS,
@@ -72,7 +72,7 @@ export const login = ({email, password}) => async dispatch =>{
   }
   try{
     dispatch(isAuthenticating());
-    const res = await axios.post('/api/auth',{email,password},config);
+    const res = await axios.post('/api/auth/login',{email,password},config);
 
     dispatch({
       type:LOGIN_SUCCESS,
