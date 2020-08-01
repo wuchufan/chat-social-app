@@ -35,9 +35,14 @@ const ChatRoom = ({
   },[receiveMsgs])
 
 
-  //Should change it when deploy
-  const ENDPOINT = 'https://mengnan-group.herokuapp.com/';
-  // 'http://localhost:5000/';
+  let ENDPOINT;
+  if(process.env.NODE_ENV === 'production'){
+     ENDPOINT = 'https://mengnan-group.herokuapp.com/';
+  }else{
+    ENDPOINT = 'http://localhost:5000/';
+  }
+
+
 
   //initiate socket connection
   useEffect(()=>{

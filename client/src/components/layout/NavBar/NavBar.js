@@ -29,9 +29,9 @@ const NavBar = ({auth:{ isAuthenticated, loading, user }, logout, history})=>{
           <NavLink to='/profile' className={classes['navbar__item']}>
             Profile
           </NavLink>
-          {/* <NavLink to='/people' className={classes['navbar__item']}>
+          <NavLink to='/people' className={classes['navbar__item']}>
             People
-          </NavLink> */}
+          </NavLink>
         <NavLink to='/' onClick={logout} className={classes['navbar__item']}>
           Logout
         </NavLink>

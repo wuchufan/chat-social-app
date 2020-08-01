@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import cls from './People.module.scss';
 //components
 import NavBar from '../NavBar/NavBar';
@@ -11,7 +10,6 @@ const People = ({}) => {
   return (<>
     <NavBar/>
     <div className={cls['container']}>
-
       <Title>Our members</Title>
       <Members/>
     </div>
