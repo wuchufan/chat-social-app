@@ -2,35 +2,18 @@ const express = require('express');
 const Visitor = require('../../models/Visit');
 const router = express.Router();
 
-router.route('/').post(async (req, res) => {
-  try {
-    const visitNum = new Visitor({});
+const{
+  getVisit,
+  recordVisit,
+  getVisitStats
+} = require('../../controllers/visitController');
 
-    const result = await visitNum.save();
-    res.json({msg: result})
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({msg: err});
-  }
+router.route('/')
+.get(getVisit)
+.post(recordVisit);
 
-}).put(async (req, res) => {
-  if (process.env.NODE_ENV === 'production') {
-    try {
-      const visitResult = await Visitor.findOneAndUpdate({
-        function: 'User visit number recording'
-      }, {
-        $inc: {
-          visited: 1
-        }
-      }, {new: true});
-      res.json({msg: visitResult});
+router.route('/visit-stats')
+.get(getVisitStats);
 
-    } catch (err) {
-
-      res.status(500).json({msg: err});
-    }
-  }
-
-})
 
 module.exports = router;

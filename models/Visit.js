@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 
 
 const visitorSchema = new mongoose.Schema({
-  function:{
-    type:String,
-    default:'User visit number recording'
+  ipAddress:{
+    type:String
   },
-  visited:{
-    type:Number,
-    default:0
+  timeVisited:{
+    type:Date,
+    default:Date.now
   }
+
 });
 
 module.exports = Visitor = mongoose.model('Visitor', visitorSchema);

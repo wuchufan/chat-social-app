@@ -15,9 +15,9 @@ const NavBar = ({auth:{ isAuthenticated, loading, user }, logout, history})=>{
           <NavLink activeClassName={classes['active']} exact to='/' className={classes['navbar__item']}>
             Main
           </NavLink>
-          <NavLink activeClassName={classes['active']} exact to='/people' className={classes['navbar__item']}>
+          {/* <NavLink activeClassName={classes['active']} exact to='/people' className={classes['navbar__item']}>
             People
-          </NavLink>
+          </NavLink> */}
         </Fragment>);
 
   const authNav = (
@@ -29,9 +29,9 @@ const NavBar = ({auth:{ isAuthenticated, loading, user }, logout, history})=>{
           <NavLink to='/profile' className={classes['navbar__item']}>
             Profile
           </NavLink>
-          <NavLink to='/people' className={classes['navbar__item']}>
+          {/* <NavLink to='/people' className={classes['navbar__item']}>
             People
-          </NavLink>
+          </NavLink> */}
         <NavLink to='/' onClick={logout} className={classes['navbar__item']}>
           Logout
         </NavLink>

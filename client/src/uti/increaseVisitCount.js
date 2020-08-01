@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default async()=>{
   try{
-    await axios.put('/api/visit');
+    await axios.post('/api/visit');
   } catch(err){
   }
 }

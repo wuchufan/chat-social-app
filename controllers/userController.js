@@ -2,6 +2,20 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
+
+exports.getAllUsers = async (req,res)=>{
+  try{
+  
+
+  } catch(err){
+
+  }
+
+}
+
+
+
+
 exports.updateUserInfo = async (req, res)=>{
   const {
     newUserName
@@ -17,7 +31,7 @@ exports.updateUserInfo = async (req, res)=>{
 
     res.json(newUserNameProfile);
   } catch(error){
-    console.log(error);
+    // console.log(error);
     res.status(500).json('Server error');
   }
 }
