@@ -12,12 +12,12 @@ const NavBar = ({auth:{ isAuthenticated, loading, user }, logout, history})=>{
 
   const guestNav = (
       <Fragment>
-          <NavLink activeClassName={classes['active']} to='/' className={classes['navbar__item']}>
+          <NavLink activeClassName={classes['active']} exact to='/' className={classes['navbar__item']}>
             Main
           </NavLink>
-          {/* <NavLink to='/people' className={classes['navbar__item']}>
+          <NavLink activeClassName={classes['active']} exact to='/people' className={classes['navbar__item']}>
             People
-          </NavLink> */}
+          </NavLink>
         </Fragment>);
 
   const authNav = (
@@ -41,7 +41,7 @@ const NavBar = ({auth:{ isAuthenticated, loading, user }, logout, history})=>{
 
   return (
     <nav className={classes['container']}>
-      <div className={classes['icon']}>{'{G}'}roup</div>
+      <NavLink exact to ='/' className={classes['icon']}>{'{G}'}roup</NavLink>
       <ul className={classes['navbar']}>
         {isAuthenticated && user ? authNav : guestNav}
       </ul>
