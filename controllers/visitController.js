@@ -51,7 +51,7 @@ exports.getVisit = async (req,res)=>{
 
 //record incoming visitor's ip and the time they visited
 exports.recordVisit = async (req,res) =>{
-  // if (process.env.NODE_ENV === 'production') {
+  if (process.env.NODE_ENV === 'production') {
   try {
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
@@ -63,5 +63,5 @@ exports.recordVisit = async (req,res) =>{
   } catch (err) {
     res.status(500).json({msg: err});
   }
-  // }
+  }
 }

@@ -1,0 +1,74 @@
+.container{
+
+  height:40rem;
+  display:flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px -4px rgba(0,0,0,.15);
+  text-align: center;
+  color:#333;
+  border-radius: 5px;
+  & > div:not(:last-child) {
+    margin-bottom:1rem;
+  }
+
+  &:hover .button{
+    transform: translateY(0);
+    opacity:1;
+    visibility: visible;
+  }
+}
+
+.avatar{
+
+  padding:2rem;
+  &__img{
+    width:13rem;
+    border-radius: 50%;
+  }
+}
+
+.username{
+  font-size: 4rem;
+  font-weight:900;
+}
+
+.email{
+  font-size:2rem;
+}
+
+.education__detail{
+  font-size:1.5rem;
+  line-height: 2;
+  color:grey;
+
+}
+
+.button{
+  padding:1rem;
+  font-size:1.5rem;
+  font-weight:bold;
+  background-color:#17a2b8;
+  display:inline-block;
+  color:white;
+  width:40%;
+  border-radius:10px;
+  margin:2rem auto 0;
+  transition:all 0.2s ease;
+  transform:translateY(2rem);
+  opacity:0;
+  visibility:hidden;
+  user-select: none;
+  cursor:pointer;
+
+ &:hover{
+  transform:translateY(-3px) !important;
+  box-shadow: 0 10px 30px -4px rgba(0,0,0,.15);
+  opacity:0.8 !important;
+ }
+
+ &:active{
+   transform:translateY(0) !important;
+   box-shadow: 0 !important;
+ }
+
+}

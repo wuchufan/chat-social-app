@@ -1,7 +1,9 @@
 .container{
   margin-top:15rem;
-  display:flex;
-  flex-direction:column;
-  height:200rem;
-  background-color:orangered;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,30rem);
+  grid-column-gap:5rem;
+  grid-row-gap:5rem;
+  justify-content: center;
+
 }

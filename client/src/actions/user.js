@@ -1,8 +1,31 @@
 import axios from 'axios';
 import {
   USERNAME_EDIT_SUCCESS,
-  USERNAME_EDIT_FAIL
+  USERNAME_EDIT_FAIL,
+  GET_ALL_USERS_SUCCESS,
+  GET_ALL_USERS_FAIL
 } from './types';
+
+//get all users
+export const getAllUsers = () => async dispatch =>{
+  try{
+    const res = await axios.get('/api/user');
+    const profiles = res.data.msg;
+
+
+    dispatch({
+      type:GET_ALL_USERS_SUCCESS,
+      payload:profiles
+    })
+
+  } catch(err){
+    dispatch({
+      type:GET_ALL_USERS_FAIL,
+      payload:err.response.data.msg
+    })
+  }
+}
+
 
 //edit username
 

@@ -10,8 +10,8 @@ const {
 
 
 router.route('/')
-.get(getAllUsers)
-.put(auth, updateUserInfo); //modify username
+.get(getAllUsers)            //get all users
+.put(auth, updateUserInfo); //modify user's username
 
 
 
