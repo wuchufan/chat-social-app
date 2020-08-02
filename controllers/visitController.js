@@ -12,6 +12,9 @@ exports.getVisitStats = async (req, res)=>{
           firstTimeVisit:{$min: '$timeVisited'},
           lastTimeVisit:{$max:'$timeVisited'}
         }
+      },
+      {
+        $sort:{visitNum:-1}
       }
     ]);
 
@@ -50,7 +53,7 @@ exports.getVisit = async (req,res)=>{
 exports.recordVisit = async (req,res) =>{
   // if (process.env.NODE_ENV === 'production') {
   try {
-    const ip = req.ip;
+    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
     const visitor = await Visitor.create({
       ipAddress:ip
