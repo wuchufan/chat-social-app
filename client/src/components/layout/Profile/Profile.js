@@ -24,7 +24,12 @@ const Profile = ({
   useEffect(()=>{
     getCurrentProfile()
   },[getCurrentProfile]);
-
+  let school, major;
+  let hasEduProfile = profile && profile.education;
+  if(hasEduProfile){
+      if(profile.education.school) school = profile.education.school;
+      if(profile.education.major) major = profile.education.major;
+  }
 
   return (
     <Fragment>
@@ -32,9 +37,10 @@ const Profile = ({
       <section className={classes['container']}>
         <div className={classes['avatar']}>
           <img alt='avt' src={defaultImg} className={classes['avatar__img']}/>
+          <h1 className={classes['avatar__username']} style={hasEduProfile ? null : {marginBottom:0}}>{username}</h1>
+          <h1 className={classes['avatar__education']}>{hasEduProfile ? `Studied ${major ?? ' '} ${school ? 'at ' +  school :' '}`: null}</h1>
 
           <Operations/>
-
         </div>
         <div style={profile ? null : {alignSelf:'center'}} className={classes['profile']}>
           {loading ? <Spinner/> :

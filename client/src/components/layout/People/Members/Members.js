@@ -25,9 +25,9 @@ const Members = ({
     <>
       {user.loading ? <Spinner style={spinnerStyle}/> :
        <section className={cls['container']}>
-         {user.profiles.map((profile)=>{
+         {user.profiles.map((profile,i)=>{
 
-           return <Member profile={profile}/>
+           return <Member key={i} profile={profile}/>
          })}
 
        </section>}

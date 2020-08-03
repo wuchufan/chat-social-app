@@ -4,6 +4,7 @@ import classes from './Info.module.scss'
 const Info = ({
   username,
   profile: {
+    email,
     education,
     social,
     age,
@@ -11,7 +12,7 @@ const Info = ({
   }
 }) => {
 
-  return (<section className={classes['container']}>
+  return (<div className={classes['container']}>
     {/* BASIC INFO */}
     {
       (age || username) && <div className={classes['basic-info'] + ' ' + classes['item']}>
@@ -129,7 +130,7 @@ const Info = ({
 
     </div>
 
-  </section>);
+  </div>);
 }
 
 export default Info;

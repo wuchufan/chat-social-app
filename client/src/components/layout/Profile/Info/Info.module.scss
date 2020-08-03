@@ -4,6 +4,10 @@ $title-color:#17a2b8;
   display:grid;
   grid-template-columns: 1fr 1fr;
   grid-gap:1.5rem;
+    border-radius: inherit;
+  & > div{
+        border-radius: inherit;
+  }
 
 }
 .item{

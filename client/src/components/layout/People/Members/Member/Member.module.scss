@@ -1,12 +1,13 @@
 .container{
 
-  height:40rem;
+  min-height:40rem;
   display:flex;
   flex-direction: column;
   box-shadow: 0 10px 30px -4px rgba(0,0,0,.15);
   text-align: center;
   color:#333;
   border-radius: 5px;
+
   & > div:not(:last-child) {
     margin-bottom:1rem;
   }
@@ -30,6 +31,8 @@
 .username{
   font-size: 4rem;
   font-weight:900;
+  word-wrap:break-word;
+  padding:0 2rem;
 }
 
 .email{
@@ -52,11 +55,13 @@
   color:white;
   width:40%;
   border-radius:10px;
-  margin:2rem auto 0;
+  // margin:2rem auto 0;
+  align-self: center;
   transition:all 0.2s ease;
   transform:translateY(2rem);
   opacity:0;
   visibility:hidden;
+
   user-select: none;
   cursor:pointer;
 
