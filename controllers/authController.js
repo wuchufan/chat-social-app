@@ -1,6 +1,8 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const Profile = require('../models/Profile');
+
 
 exports.getUserInfo = async (req, res)=>{
 
@@ -38,6 +40,8 @@ exports.registerUser = async (req, res)=>{
     user.password = await bcrypt.hash(password,salt);
 
     await user.save();
+    await Profile.create({user:user.id})
+
 
     const payload = {
       user:{

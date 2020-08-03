@@ -6,9 +6,22 @@ const Profile = require('../models/Profile');
 
 exports.getAllUsers = async (req,res)=>{
   try{
-    const info = await Profile.find().populate('user','-password');
+    const profiles = await Profile.find().populate('user').select('-password');
+    // const users = await User.find().select(['-__v','-password']).lean();
+    // console.log('profiles are', profiles);
+    //
+    // profiles.forEach((profile)=>{
+    //
+    //   users.forEach((user)=>{
+    //     if(JSON.stringify(user._id) === JSON.stringify(profile.user._id)){
+    //       user.profile = {...profile};
+    //       delete user.profile.user;
+    //
+    //     }
+    //   });
+    // });
 
-    res.json({msg:info});
+    res.json({msg:profiles});
 
   } catch(err){
     console.log(err);
