@@ -8,7 +8,7 @@ import Member from './Member/Member';
 
 
 const Members = ({
-  user,
+  users,
   getAllUsers
 }) => {
 
@@ -23,9 +23,9 @@ const Members = ({
 
   return (
     <>
-      {user.loading ? <Spinner style={spinnerStyle}/> :
+      {users.loading ? <Spinner style={spinnerStyle}/> :
        <section className={cls['container']}>
-         {user.profiles.map((profile,i)=>{
+         {users.profiles.map((profile,i)=>{
 
            return <Member key={i} profile={profile}/>
          })}
@@ -45,7 +45,7 @@ Members.propTypes = {
 
 
 const mapStateToProps = state =>({
-  user:state.user
+  users:state.users
 })
 
 export default connect(mapStateToProps, { getAllUsers })(Members);

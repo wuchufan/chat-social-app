@@ -2,12 +2,15 @@ import React, {Fragment} from 'react';
 import classes from './Info.module.scss'
 
 const Info = ({
-  username,
+
   profile: {
-    email,
+    user:{
+      email,
+      username,
+      age
+    },
     education,
     social,
-    age,
     game
   }
 }) => {
@@ -15,15 +18,15 @@ const Info = ({
   return (<div className={classes['container']}>
     {/* BASIC INFO */}
     {
-      (age || username) && <div className={classes['basic-info'] + ' ' + classes['item']}>
+      (age || email) && <div className={classes['basic-info'] + ' ' + classes['item']}>
           <h1 className={classes['title']}>
             Basic Info
           </h1>
           {
-            username && <p className={classes['field']}>
-                Username:{' '}
+            email && <p className={classes['field']}>
+                Email:{' '}
                 <span className={classes['content']}>
-                  {username}
+                  {email}
                 </span>
               </p>
           }

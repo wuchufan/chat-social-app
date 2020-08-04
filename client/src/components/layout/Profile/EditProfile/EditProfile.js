@@ -34,7 +34,9 @@ const EditProfile = ({
     if (!profile)
       getCurrentProfile();
 
-    setFormData((prevState) => ({
+    setFormData((prevState) => {
+
+      return{
       ...prevState,
       age: !profile
         ? ''
@@ -43,23 +45,23 @@ const EditProfile = ({
         ? ''
         : !profile.education
           ? ''
-          : profile.education.school,
+          : profile.education.school ?? '' ,
       major: !profile
         ? ''
         : !profile.education
           ? ''
-          : profile.education.major,
+          : profile.education.major ?? '',
       github: !profile
         ? ''
         : !profile.social
           ? ''
-          : profile.social.github,
+          : profile.social.github ?? '',
       facebook: !profile
         ? ''
         : !profile.social
           ? ''
-          : profile.social.facebook
-    }))
+          : profile.social.facebook ?? ''
+    }})
 
   }, [getCurrentProfile, profile]);
   const {

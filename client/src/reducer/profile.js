@@ -2,7 +2,8 @@ import {
   GET_PROFILE_SUCCESS,
   GET_PROFILE_FAIL,
   PROFILE_EDIT_FAIL,
-  PROFILE_EDIT_SUCCESS
+  PROFILE_EDIT_SUCCESS,
+  CLEAR_PROFILE
 } from '../actions/types';
 
 
@@ -42,6 +43,13 @@ export default function(state = initialState, action){
       ...state,
       errorMessage:payload,
       loading:false
+    }
+
+    case CLEAR_PROFILE:
+    return{
+      profile:null,
+      errorMessage:null,
+      loading:true
     }
 
     default:

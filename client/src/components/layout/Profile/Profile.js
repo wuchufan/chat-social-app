@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../../actions/profile';
 import Spinner from '../../UI/Spinner/Spinner';
 import defaultImg from '../../../assets/img/default.jpg';
-
+import Avatar from './Avatar/Avatar';
 
 const Profile = ({
   getCurrentProfile,
@@ -17,43 +17,39 @@ const Profile = ({
   },
   auth:{
     user:{
-      username
+      username,
+      email
     }
 }}) => {
 
   useEffect(()=>{
     getCurrentProfile()
   },[getCurrentProfile]);
-  let school, major;
-  let hasEduProfile = profile && profile.education;
-  if(hasEduProfile){
-      if(profile.education.school) school = profile.education.school;
-      if(profile.education.major) major = profile.education.major;
-  }
+
+  // let school, major;
+  // let hasEduProfile = profile && profile.education;
+  // if(hasEduProfile){
+  //     if(profile.education.school) school = profile.education.school;
+  //     if(profile.education.major) major = profile.education.major;
+  // }
 
   return (
     <Fragment>
       <NavBar/>
       <section className={classes['container']}>
-        <div className={classes['avatar']}>
-          <img alt='avt' src={defaultImg} className={classes['avatar__img']}/>
-          <h1 className={classes['avatar__username']} style={hasEduProfile ? null : {marginBottom:0}}>{username}</h1>
-          <h1 className={classes['avatar__education']}>{hasEduProfile ? `Studied ${major ?? ' '} ${school ? 'at ' +  school :' '}`: null}</h1>
-
-          <Operations/>
-        </div>
+        {profile ? <Avatar profile={profile}/> : <Spinner/>}
         <div style={profile ? null : {alignSelf:'center'}} className={classes['profile']}>
           {loading ? <Spinner/> :
-          ( profile ? <Info profile={profile} username={username}/> :
+          ( profile ? <Info profile={profile}/> :
           <h1 style={{
             fontSize:'4rem',
             color:'#17a2b8',
-
           }}>Greetings, <span style={{color:'#24292e'}}>{username}</span>.<br/> It seems like you don't have a profile yet. <br/> You can click 'Create Profile' to create one!</h1>)
 
           }
 
         </div>
+          <Operations/>
       </section>
     </Fragment>
   );

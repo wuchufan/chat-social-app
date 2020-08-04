@@ -1,17 +1,3 @@
-@import '../../../sass/main';
-.container{
-  padding-top:$push-down-padding;
-  display:flex;
-  flex-direction:column;
-  // grid-template-columns: auto 2fr;
-  // grid-template-areas:'avatar profile ';
-  // justify-content: center;
-  max-width:$max-width;
-  margin: 0 auto;
-  border-radius:2.5px;
-  // grid-gap:10rem;
-}
-
 .avatar{
   background-color:#17a2b8;
   text-align: center;
@@ -47,9 +33,6 @@
     & a{
       margin-right:2rem;
       color:inherit;
-      &:hover{
-        color:#333;
-      }
 
       &:link,
       &:focus,
@@ -57,14 +40,9 @@
       &:visited{
         color:inherit;
       }
+      &:hover{
+        color:#333;
+      }
     }
   }
-}
-
-.profile{
-  grid-area:profile;
-  width:100%;
-  border-radius: inherit;
-  // align-self: center;
-
 }
