@@ -47,11 +47,11 @@ const SignIn = ({
         <div className={classes['form__input']}>
           <div className={classes['input-container']}>
             <h5 className={classes['label']}>Email</h5>
-            <input className={classes['input']} value={email} type='email' name='email' onChange={(e) => onChange(e)} required></input>
+            <input className={classes['input']} value={email} type='email' name='email' placeholder='guest@gmail.com' onChange={(e) => onChange(e)} required></input>
           </div>
           <div className={classes['input-container']}>
             <h5 className={classes['label']}>Password</h5>
-            <input className={classes['input']} value={password} type='password' name='password' onChange={(e) => onChange(e)} autoComplete='off' required></input>
+            <input className={classes['input']} value={password} type='password' name='password' placeholder='guest' onChange={(e) => onChange(e)} autoComplete='off' required></input>
           </div>
 
           <ErrorMessageBox>{errMessage}</ErrorMessageBox>
