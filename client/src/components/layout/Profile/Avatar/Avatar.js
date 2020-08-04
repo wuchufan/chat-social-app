@@ -7,8 +7,8 @@ import defaultImg from '../../../../assets/img/default.jpg';
 
 const Avatar = ({profile}) => {
 
-  let school, major,github,facebook;
-  let socialArr = Object.keys(profile.social);
+  let school, major;
+  let socialArr = profile.social ? Object.keys(profile.social): [];
   let hasEduProfile = profile && profile.education;
   if(hasEduProfile){
       if(profile.education.school) school = profile.education.school;
@@ -16,8 +16,6 @@ const Avatar = ({profile}) => {
   }
 
 
-
-  console.log(socialArr);
   return (
     <div className={classes['avatar']}>
       <img alt='avt' src={defaultImg} className={classes['avatar__img']}/>
@@ -29,7 +27,7 @@ const Avatar = ({profile}) => {
       <div className={classes['avatar__icon-group']}>
         {
           socialArr.map((socialType,i)=>{
-          
+
             return (<a key={i} href={profile.social[socialType]}>
               <i className={`fab fa-${socialType} fa-3x`}></i>
             </a>)

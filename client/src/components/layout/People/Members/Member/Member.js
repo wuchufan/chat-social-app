@@ -1,16 +1,28 @@
 import React from 'react';
 import cls from './Member.module.scss';
 import defaultImage from '../../../../../assets/img/default.jpg';
+import { withRouter } from 'react-router-dom';
 
-
-const Member = ({profile:{
+const Member = ({
+  history,
+  profile:{
   user:{
   username,
   email,
-  avatar
+  avatar,
+  _id
 },
 education
 }}) => {
+
+  const viewOnClick = ()=>{
+    history.push({
+      pathname:'/profile',
+      search:`?target=${_id}`
+
+    });
+  
+  }
 
   return (
     <>
@@ -34,7 +46,7 @@ education
 
       }
       </div>
-      <div role='button' className={cls['button']}>
+      <div role='button' className={cls['button']} onClick={viewOnClick}>
         View Profile
       </div>
     </div>
@@ -44,4 +56,4 @@ education
 
 
 
-export default Member;
+export default withRouter(Member);

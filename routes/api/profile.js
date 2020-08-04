@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../../middleware/auth');
-// const Profile = require('../../models/Profile');
+const { validate } = require('../../middleware/profile');
 
 const {
   getUserProfile,
-  createOrUpdateUserProfile
+  createOrUpdateUserProfile,
+  getTargetUserProfile
 } = require('../../controllers/profileController')
 
 
@@ -14,7 +15,7 @@ router.route('/me')
 
 
 router.route('/')
-.post(auth,createOrUpdateUserProfile); //create profile
-
+.post(auth,createOrUpdateUserProfile) //create profile
+.get(validate,getTargetUserProfile);
 
 module.exports = router;

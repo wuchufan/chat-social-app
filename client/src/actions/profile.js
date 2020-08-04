@@ -4,14 +4,20 @@ import {
   GET_PROFILE_FAIL,
   PROFILE_EDIT_SUCCESS,
   PROFILE_EDIT_FAIL,
+  CLEAR_PROFILE
 
 } from './types';
 
 
-export const getCurrentProfile = () => async dispatch =>{
+export const getCurrentProfile = (target) => async dispatch =>{
   try{
+  let profile;
+  if(target){
+    profile = await axios.get(`/api/profile${target}`);
+  } else {
+    profile = await axios.get('/api/profile/me');
+  }
 
-  const profile = await axios.get('/api/profile/me');
   dispatch({
     type:GET_PROFILE_SUCCESS,
     payload:profile.data
@@ -26,7 +32,13 @@ export const getCurrentProfile = () => async dispatch =>{
   }
 }
 
+export const clearProfile = () => dispatch =>{
 
+  dispatch({
+    type:CLEAR_PROFILE
+  })
+
+}
 export const editProfile = (formData) => async dispatch =>{
   const config = {
     "Content-Type":"application/json"

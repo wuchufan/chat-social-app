@@ -11,7 +11,7 @@ const Landing = ({ auth:{ isAuthenticated,user }}) =>{
   const [hasAccount, setAccount] = useState(false);
 
 
-  if(isAuthenticated && user) return <Redirect to='/chat-room'/>
+  if(isAuthenticated && user) return <Redirect to='/profile'/>
 
 
   return (

@@ -7,6 +7,7 @@ import Members from './Members/Members';
 
 
 const People = ({}) => {
+
   return (<>
     <NavBar/>
     <div className={cls['container']}>

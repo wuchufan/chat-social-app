@@ -96,9 +96,7 @@ export const logout = () => dispatch =>{
   dispatch({
     type:LOG_OUT
   });
-  dispatch({
-    type:CLEAR_PROFILE
-  });
+
 }
 
 //check if authenticating

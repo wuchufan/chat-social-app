@@ -3,6 +3,9 @@ import spinner from './spinner.gif';
 
 export default({style}) => {
 
+  const img = new Image();
+  img.src = spinner;
+  
   const spinnerStyle = {
     margin: 'auto',
     width: '200px',

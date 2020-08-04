@@ -1,49 +1,64 @@
-
 const Profile = require('../models/Profile');
 
+exports.getUserProfile = async (req, res) => {
+  try {
 
-exports.getUserProfile = async (req,res) =>{
-  try{
-
-    let profile = await Profile.findOne({user:req.user.id}).populate('user','-password');
-    if(!profile) return res.status(400).json({msg:'no profile is found'});
+    let profile = await Profile.findOne({user: req.user.id}).populate('user', '-password');
+    if (!profile)
+      return res.status(400).json({msg: 'no profile is found'});
 
     res.json(profile)
 
-  } catch(error){
+  } catch (error) {
     console.log(error);
-    res.status(500).json({msg:'Server error'});
+    res.status(500).json({msg: 'Server error'});
   }
 }
 
+exports.getTargetUserProfile = async (req, res) => {
 
-exports.createOrUpdateUserProfile = async (req,res) =>{
-  const {
-    age,
-    school,
-    major,
-    github,
-    facebook
-  } = req.body;
+  try {
+    
+    let profile = await Profile.findOne({user:req.target}).populate('user', '-password');
 
-  const profileData= {}
+    if (!profile)
+      return res.status(400).json({msg: 'no profile is found'});
+
+    res.json(profile);
+
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({msg: 'Server error'})
+  }
+}
+
+exports.createOrUpdateUserProfile = async (req, res) => {
+  const {age, school, major, github, facebook} = req.body;
+
+  const profileData = {}
   profileData.user = req.user.id;
-  if(age) profileData.age = age;
+  if (age)
+    profileData.age = age;
   profileData.education = {}
-  if(school) profileData.education.school = school;
-  if(major) profileData.education.major = major;
+  if (school)
+    profileData.education.school = school;
+  if (major)
+    profileData.education.major = major;
   profileData.social = {}
-  if(github) profileData.social.github = github;
-  if(facebook) profileData.social.facebook = facebook;
-  try{
-    let profile = await Profile.findOne({user:req.user.id});
-    if(profile){
+  if (github)
+    profileData.social.github = github;
+  if (facebook)
+    profileData.social.facebook = facebook;
+  try {
+    let profile = await Profile.findOne({user: req.user.id});
+    if (profile) {
       // console.log(profileData);
-      profile = await Profile.findOneAndUpdate(
-        {user:req.user.id},
-        {$set:profileData},
-        {new:true}
-      );
+      profile = await Profile.findOneAndUpdate({
+        user: req.user.id
+      }, {
+        $set: profileData
+      }, {new: true});
       return res.json(profile);
     }
 
@@ -51,10 +66,9 @@ exports.createOrUpdateUserProfile = async (req,res) =>{
     await profile.save();
     return res.json(profile);
 
-
-  } catch(error){
+  } catch (error) {
     console.log(err);
-    res.status(500).json({msg:'Server error'})
+    res.status(500).json({msg: 'Server error'})
   }
 
 }

@@ -7,7 +7,9 @@ import Spinner from '../../../UI/Spinner/Spinner';
 import Member from './Member/Member';
 
 
+
 const Members = ({
+
   users,
   getAllUsers
 }) => {
@@ -27,7 +29,7 @@ const Members = ({
        <section className={cls['container']}>
          {users.profiles.map((profile,i)=>{
 
-           return <Member key={i} profile={profile}/>
+           return <Member key={i}  profile={profile}/>
          })}
 
        </section>}
@@ -39,7 +41,6 @@ const Members = ({
 
 
 Members.propTypes = {
-  user: PropTypes.object.isRequired,
   getAllUsers: PropTypes.func.isRequired
 }
 
