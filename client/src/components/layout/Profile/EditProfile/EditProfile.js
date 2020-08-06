@@ -99,11 +99,8 @@ const EditProfile = ({
     });
   }
   const removeGameHandler = (gameIdx) =>{
-    console.log(gameIdx);
     const newGames = games.filter((game,index)=>{
-      console.log(index);
       return index !== gameIdx});
-    console.log(newGames);
     setFormData({
       ...formData,
       games:newGames
