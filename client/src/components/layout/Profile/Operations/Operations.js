@@ -15,7 +15,7 @@ const Operations = ({profile:{profile}, history}) => {
   return (
     <div className={classes['container']}>
     <Button click={editHandler} color={'info'}>Edit Profile</Button>
-    <Button color={'danger'}>Delete profile</Button>
+    <Button color={'danger'}>Delete Account</Button>
     </div>
   );
 }

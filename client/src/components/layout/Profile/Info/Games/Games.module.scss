@@ -1,0 +1,8 @@
+@import '../../../../../sass/abstracts/variables';
+.games{
+  grid-column: 1 / -1;
+}
+.name{
+  color:$color-profile;
+  font-weight:bold;
+}

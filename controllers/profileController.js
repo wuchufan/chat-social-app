@@ -34,8 +34,8 @@ exports.getTargetUserProfile = async (req, res) => {
 }
 
 exports.createOrUpdateUserProfile = async (req, res) => {
-  const {age, school, major, github, facebook, games} = req.body;
 
+  const {age, school, major, github, facebook, games} = req.body;
   const profileData = {}
   profileData.user = req.user.id;
   if (age)

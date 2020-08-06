@@ -58,6 +58,10 @@ const EditProfile = ({
         : !profile.education
           ? ''
           : profile.education.major ?? '',
+      games:!profile
+      ?[{name:'',genre:'',comment:''}]
+      : profile.games
+      ,
       github: !profile
         ? ''
         : !profile.social
@@ -132,7 +136,7 @@ const EditProfile = ({
             await editUsername({newUserName});
 
           }
-          await editProfile({age, school, major, github, facebook});
+          await editProfile({age, school, major, github, facebook,games});
 
           history.push({pathname: '/profile'});
         }}>

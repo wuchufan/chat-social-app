@@ -1,11 +1,12 @@
 import React from 'react';
+import localCls from './Social.module.scss';
 
 
 const Social = ({
   classes,
   social
 }) => (
-  <div className={classes['social-media'] + ' ' + classes['item']}>
+  <div className={localCls['social-media'] + ' ' + classes['item']}>
     <h1 className={classes['title']}>
       Social media
     </h1>

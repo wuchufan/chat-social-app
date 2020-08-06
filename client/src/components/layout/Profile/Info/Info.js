@@ -21,14 +21,15 @@ const Info = ({
 }) => {
 
   return (<div className={classes['container']}>
+    
     {/* BASIC INFO */}
     <BasicInfo age={age} email={email} classes={classes}/>
     {/* EDUCATION */}
     <Education education={education} classes={classes}/>
-    {/* FAVORITE GAMES */}
-    <Games games={games} classes={classes}/>
     {/* SOCIAL */}
     <Social social={social} classes={classes}/>
+    {/* FAVORITE GAMES */}
+    <Games games={games} classes={classes}/>
 
   </div>);
 }

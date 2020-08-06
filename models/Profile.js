@@ -23,7 +23,7 @@ const profileSchema = new Schema({
   },
   games:[
     {
-      title:{
+      name:{
         type:String
       },
       genre:{
