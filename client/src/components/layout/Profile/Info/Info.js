@@ -1,6 +1,10 @@
 import React, {Fragment} from 'react';
+import classes from './Info.module.scss';
 import BasicInfo from './BasicInfo/BasicInfo';
-import classes from './Info.module.scss'
+import Education from './Education/Education';
+import Social from './Social/Social';
+import Games from './Games/Games';
+
 
 const Info = ({
 
@@ -19,122 +23,12 @@ const Info = ({
   return (<div className={classes['container']}>
     {/* BASIC INFO */}
     <BasicInfo age={age} email={email} classes={classes}/>
-
-    {/* {
-      (age || email) && <div className={classes['basic-info'] + ' ' + classes['item']}>
-          <h1 className={classes['title']}>
-            Basic Info
-          </h1>
-          {
-            email && <p className={classes['field']}>
-                Email:{' '}
-                <span className={classes['content']}>
-                  {email}
-                </span>
-              </p>
-          }
-
-          {
-            age || age === 0 ? <p className={classes['field']}>Age:{' '}
-                <span className={classes['content']}>
-                  {age}
-                </span>
-              </p> : null
-          }
-
-        </div>
-    } */}
-
     {/* EDUCATION */}
-
-    <div className={classes['education'] + ' ' + classes['item']}>
-      <h1 className={classes['title']}>
-        Education
-      </h1>
-      {
-        education
-          ? <Fragment>
-              {
-                education.school && <p className={classes['field']}>
-
-                    {education.school}
-                  </p>
-              }
-
-              {
-                education.major && <p className={classes['field']}>
-                    Field Of Study:{' '}
-                    <span className={classes['content']}>{education.major}</span>
-                  </p>
-              }
-            </Fragment>
-          : <p className={classes['field']}>Profile not added</p>
-      }
-    </div>
-
+    <Education education={education} classes={classes}/>
     {/* FAVORITE GAMES */}
-    {
-      games.length
-        ? <div className={classes['games'] + ' ' + classes['item']}>
-            {
-              games.length
-                ? <h1 className={classes['title']}>
-                    Favorite games
-                  </h1>
-                : null
-            }
-
-            {
-              games.length
-                ? games.map((el) => (<div>
-                  <p className={classes['field']}>
-                    Name:{' '}<span className={classes['content']}>
-                      {el.title}
-                    </span>
-                  </p>
-                  <p className={classes['field']}>
-                    Genre:{' '}<span className={classes['content']}>
-                      {el.genre}
-                    </span>
-                  </p>
-                </div>))
-                : null
-            }
-          </div>
-        : null
-    }
-
+    <Games games={games} classes={classes}/>
     {/* SOCIAL */}
-    <div className={classes['social-media'] + ' ' + classes['item']}>
-      <h1 className={classes['title']}>
-        Social media
-      </h1>
-
-      {
-        social
-          ? <Fragment>
-              {
-                social.github && <p className={classes['field']}>
-                    github:{' '}
-                    <span className={classes['content']}>
-                      {social.github}
-                    </span>
-
-                  </p>
-              }
-              {
-                social.facebook && <p className={classes['field']}>
-                    facebook:{' '}
-                    <span className={classes['content']}>
-                      {social.facebook}
-                    </span>
-                  </p>
-              }
-            </Fragment>
-          : <p className={classes['field']}>Profile not added</p>
-      }
-
-    </div>
+    <Social social={social} classes={classes}/>
 
   </div>);
 }

@@ -9,7 +9,7 @@ const BasicInfo = ({
   return (
     <>
     {
-      (age || email) && <div className={localCls['localCls'] + ' ' + classes['item']}>
+      (age || email) && <div className={classes['item']}>
           <h1 className={classes['title']}>
             Basic Info
           </h1>

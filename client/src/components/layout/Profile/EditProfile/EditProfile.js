@@ -6,6 +6,7 @@ import {getCurrentProfile, editProfile} from '../../../../actions/profile';
 import {editUsername} from '../../../../actions/user';
 import NavBar from '../../NavBar/NavBar';
 import Button from '../../../UI/Buttons/ProfileButton/ProfileButton';
+import Games from './Games/Games';
 
 const EditProfile = ({
   history,
@@ -28,7 +29,12 @@ const EditProfile = ({
     school: '',
     major: '',
     github: '',
-    facebook: ''
+    facebook: '',
+    games:[{
+      name:'',
+      genre:'',
+      comment:''
+    },{name:'',genre:'',comment:''}]
   })
 
   useEffect(() => {
@@ -70,6 +76,7 @@ const EditProfile = ({
     age,
     school,
     major,
+    games,
     github,
     facebook
   } = formData;
@@ -79,6 +86,17 @@ const EditProfile = ({
       ...formData,
       [e.target.name]: e.target.value
     })
+  }
+
+  const gameOnChange = (e, gameIdx) =>{
+    const newGames = games.map((game,i)=>{
+      if(gameIdx !== i) return game;
+      return {...game,[e.target.name] : e.target.value};
+    });
+    setFormData({
+      ...formData,
+      games:newGames
+    });
   }
 
   const goBackHanlder = () =>{
@@ -119,6 +137,7 @@ const EditProfile = ({
           <label className={classes['label']}>Field Of Study</label>
           <input placeholder='Field Of Study' className={classes['input']} name='major' value={major} onChange={(e) => onChange(e)}/>
         </div>
+        <Games games={games} change={(e,gameIdx)=>gameOnChange(e,gameIdx)} classes={classes}/>
         <div>
           <h1 className={classes['title']}>Social</h1>
           <label className={classes['label']}>Github</label>
