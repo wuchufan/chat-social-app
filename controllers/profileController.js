@@ -18,7 +18,7 @@ exports.getUserProfile = async (req, res) => {
 exports.getTargetUserProfile = async (req, res) => {
 
   try {
-    
+
     let profile = await Profile.findOne({user:req.target}).populate('user', '-password');
 
     if (!profile)
@@ -34,13 +34,13 @@ exports.getTargetUserProfile = async (req, res) => {
 }
 
 exports.createOrUpdateUserProfile = async (req, res) => {
-  const {age, school, major, github, facebook} = req.body;
+  const {age, school, major, github, facebook, games} = req.body;
 
   const profileData = {}
   profileData.user = req.user.id;
   if (age)
-    profileData.age = age;
-  profileData.education = {}
+  profileData.age = age;
+  profileData.education = {};
   if (school)
     profileData.education.school = school;
   if (major)
@@ -50,10 +50,14 @@ exports.createOrUpdateUserProfile = async (req, res) => {
     profileData.social.github = github;
   if (facebook)
     profileData.social.facebook = facebook;
+  profileData.games = [];
+  if (games){
+    profileData.games = profileData.games.concat(games);
+  }
+
   try {
     let profile = await Profile.findOne({user: req.user.id});
     if (profile) {
-      // console.log(profileData);
       profile = await Profile.findOneAndUpdate({
         user: req.user.id
       }, {

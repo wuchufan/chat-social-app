@@ -29,13 +29,13 @@
 }
 
 .username{
-  font-size: 4rem;
-  font-weight:900;
 
+  font-weight:900;
+  white-space: nowrap;
   padding:0 2rem;
 
   & p{
-      font-size: 4rem;
+      font-size: 3.5rem;
       text-overflow:ellipsis;
       overflow: hidden;
   }

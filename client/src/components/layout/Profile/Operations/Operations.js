@@ -14,9 +14,6 @@ const Operations = ({profile:{profile}, history}) => {
 
   return (
     <div className={classes['container']}>
-    {/* <Link className={classes['edit-profile']} exact='true' to='/profile/edit-profile' >
-      {profile ? 'Edit Profile' : 'Create Profile'}
-    </Link> */}
     <Button click={editHandler} color={'info'}>Edit Profile</Button>
     <Button color={'danger'}>Delete profile</Button>
     </div>

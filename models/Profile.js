@@ -21,18 +21,19 @@ const profileSchema = new Schema({
       type:String
     }
   },
-
-  game:[
+  games:[
     {
       title:{
         type:String
       },
       genre:{
         type:String
+      },
+      comment:{
+        type:String
       }
     }
   ],
-
   social:{
     github:{
       type:String

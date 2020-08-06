@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import BasicInfo from './BasicInfo/BasicInfo';
 import classes from './Info.module.scss'
 
 const Info = ({
@@ -10,14 +11,16 @@ const Info = ({
     },
     education,
     social,
-    game,
+    games,
     age
   }
 }) => {
-  console.log(age);
+
   return (<div className={classes['container']}>
     {/* BASIC INFO */}
-    {
+    <BasicInfo age={age} email={email} classes={classes}/>
+
+    {/* {
       (age || email) && <div className={classes['basic-info'] + ' ' + classes['item']}>
           <h1 className={classes['title']}>
             Basic Info
@@ -40,7 +43,7 @@ const Info = ({
           }
 
         </div>
-    }
+    } */}
 
     {/* EDUCATION */}
 
@@ -71,10 +74,10 @@ const Info = ({
 
     {/* FAVORITE GAMES */}
     {
-      game.length
+      games.length
         ? <div className={classes['games'] + ' ' + classes['item']}>
             {
-              game.length
+              games.length
                 ? <h1 className={classes['title']}>
                     Favorite games
                   </h1>
@@ -82,8 +85,8 @@ const Info = ({
             }
 
             {
-              game.length
-                ? game.map((el) => (<div>
+              games.length
+                ? games.map((el) => (<div>
                   <p className={classes['field']}>
                     Name:{' '}<span className={classes['content']}>
                       {el.title}

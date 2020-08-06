@@ -11,11 +11,11 @@ const {
 
 
 router.route('/me')
-.get(auth,getUserProfile);  //get current user profile
+.get(auth,getUserProfile);  //get current user profile (private route)
 
 
 router.route('/')
-.post(auth,createOrUpdateUserProfile) //create profile
-.get(validate,getTargetUserProfile);
+.post(auth,createOrUpdateUserProfile) //create or update profile (private route)
+.get(validate,getTargetUserProfile); //get profile of other user (public route)
 
 module.exports = router;
