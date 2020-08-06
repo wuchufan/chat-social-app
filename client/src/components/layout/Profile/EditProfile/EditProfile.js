@@ -34,7 +34,7 @@ const EditProfile = ({
       name:'',
       genre:'',
       comment:''
-    },{name:'',genre:'',comment:''}]
+    }]
   })
 
   useEffect(() => {
@@ -98,6 +98,25 @@ const EditProfile = ({
       games:newGames
     });
   }
+  const removeGameHandler = (gameIdx) =>{
+    console.log(gameIdx);
+    const newGames = games.filter((game,index)=>{
+      console.log(index);
+      return index !== gameIdx});
+    console.log(newGames);
+    setFormData({
+      ...formData,
+      games:newGames
+    })
+  }
+  const addGameHandler = ()=>{
+
+
+    setFormData({
+      ...formData,
+      games:games.concat([{name:'',genre:'',comment:''}])
+    })
+  }
 
   const goBackHanlder = () =>{
     history.push({pathname:'/profile'})
@@ -110,6 +129,7 @@ const EditProfile = ({
         Edit Your Profile
       </h1>
       <form onSubmit={async (e) => {
+
           e.preventDefault();
           if (newUserName !== username && newUserName) {
             await editUsername({newUserName});
@@ -137,7 +157,12 @@ const EditProfile = ({
           <label className={classes['label']}>Field Of Study</label>
           <input placeholder='Field Of Study' className={classes['input']} name='major' value={major} onChange={(e) => onChange(e)}/>
         </div>
-        <Games games={games} change={(e,gameIdx)=>gameOnChange(e,gameIdx)} classes={classes}/>
+        <Games
+          removeGameHandler={(gameIdx)=>removeGameHandler(gameIdx)}
+          addGameHandler={addGameHandler}
+          games={games}
+          change={(e,gameIdx)=>gameOnChange(e,gameIdx)}
+          classes={classes}/>
         <div>
           <h1 className={classes['title']}>Social</h1>
           <label className={classes['label']}>Github</label>
@@ -148,8 +173,8 @@ const EditProfile = ({
           <input placeholder='Facebook' className={classes['input']} name='facebook' value={facebook} onChange={(e) => onChange(e)}/>
         </div>
         <div className={classes['button-group']}>
-          <Button color={'info'}>Confirm edit</Button>
-          <Button click={goBackHanlder} color={'dark'}>Back</Button>
+          <Button submit={true} color={'info'}>Confirm edit</Button>
+          <Button submit={true} click={goBackHanlder} color={'dark'}>Back</Button>
         </div>
       </form>
     </section>

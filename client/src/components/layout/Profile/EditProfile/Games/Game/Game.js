@@ -10,11 +10,13 @@ const Game = ({
   genre,
   comment
   },
-index
+  removeGameHandler,
+  index,
+  totalGames
 }) => {
 
   return (
-    <div className={localCls['container']}>
+    <div style={totalGames > 1 ? null : {paddingBottom:0}} className={localCls['container']}>
       <div className={localCls['container__inner']}>
         <div>
         <label className={classes['label']}>Name</label>
@@ -29,7 +31,8 @@ index
         <label className={classes['label']}>Comment</label>
         <textarea placeholder='Tell People why you love this game!' className={localCls['textarea']} name='comment' value={comment} onChange={(e)=>change(e,index)}/>
       </div>
-      <Button color={'danger'}>Remove game</Button>
+      {totalGames > 1 ?   <Button submit={false} click={()=>removeGameHandler(index)} color={'danger'}>Remove game</Button> : null}
+
     </div>
 
 );

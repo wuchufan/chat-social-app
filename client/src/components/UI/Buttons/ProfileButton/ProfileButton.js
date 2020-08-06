@@ -6,10 +6,11 @@ import cls from './ProfileButton.module.scss';
 const ProfileButton = ({
   color,
   children,
-  click
+  click,
+  submit
 }) => {
   return (
-    <button onClick={click} className={cls['button'] + ' ' + cls[`${color}`]} type='submit'>
+    <button onClick={click} className={cls['button'] + ' ' + cls[`${color}`]} type={submit ? 'submit' : 'button'}>
       {children}
     </button>
   );
