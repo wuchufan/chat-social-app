@@ -47,7 +47,7 @@ const EditProfile = ({
       ...prevState,
       age: !profile
         ? ''
-        : profile.age,
+        : profile.age ? profile.age : '',
       school: !profile
         ? ''
         : !profile.education
@@ -147,7 +147,7 @@ const EditProfile = ({
         </div>
         <div>
           <label className={classes['label']}>Age</label>
-          <input placeholder='Age' className={classes['input']} name='age' value={age} onChange={(e) => onChange(e)}/>
+          <input type='number' placeholder='Age' className={classes['input']} name='age' value={age} onChange={(e) => onChange(e)}/>
         </div>
         <div>
           <h1 className={classes['title']}>Education</h1>

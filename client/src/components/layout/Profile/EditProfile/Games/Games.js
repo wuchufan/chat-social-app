@@ -11,6 +11,15 @@ const Games = ({
   addGameHandler,
   removeGameHandler
 }) => {
+  const disableStyle = {
+    opacity:0.6,
+    pointerEvents:'none'
+  }
+  let canAdd = true;
+  games.forEach((game) =>{
+    if(!game.name) canAdd = false;
+  })
+
 
   return (
     <>
@@ -18,9 +27,13 @@ const Games = ({
       <div className={cls['container']}>
       {games.map((game,idx)=>{
 
-        return <Game totalGames={games.length} removeGameHandler={removeGameHandler} change={change} index={idx} value={game} key={idx} classes={classes}/>
+        return <Game totalGames={games.length} removeGameHandler={removeGameHandler} change={change} index={idx} value={game} key={idx+'1'} classes={classes}/>
       })}
+      {canAdd ?
       <Button submit={false} click={addGameHandler} color={'info'}>Add game</Button>
+      : <Button style={disableStyle} disabled submit={false} click={addGameHandler} color={'info'}>Add game</Button>
+      }
+
       </div>
     </>
   );

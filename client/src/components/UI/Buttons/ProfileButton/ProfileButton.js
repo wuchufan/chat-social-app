@@ -7,10 +7,11 @@ const ProfileButton = ({
   color,
   children,
   click,
-  submit
+  submit,
+  ...props
 }) => {
   return (
-    <button onClick={click} className={cls['button'] + ' ' + cls[`${color}`]} type={submit ? 'submit' : 'button'}>
+    <button {...props} onClick={click} className={cls['button'] + ' ' + cls[`${color}`]} type={submit ? 'submit' : 'button'}>
       {children}
     </button>
   );

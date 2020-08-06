@@ -1,6 +1,7 @@
 import {
   GET_ALL_USERS_SUCCESS,
-  GET_ALL_USERS_FAIL
+  GET_ALL_USERS_FAIL,
+  DELETE_ACCOUNT_FAIL
 } from '../actions/types';
 
 
@@ -26,6 +27,13 @@ export default function(state = initialState, action){
       ...state,
       loading:false,
       profiles:payload
+    }
+
+    case DELETE_ACCOUNT_FAIL:
+    return{
+      ...state,
+      errorMessage:payload,
+      loading:false
     }
 
     default:

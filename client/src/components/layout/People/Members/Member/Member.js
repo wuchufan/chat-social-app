@@ -21,7 +21,7 @@ education
       search:`?target=${_id}`
 
     });
-  
+
   }
 
   return (

@@ -40,7 +40,7 @@ exports.registerUser = async (req, res)=>{
     user.password = await bcrypt.hash(password,salt);
 
     await user.save();
-    await Profile.create({user:user.id})
+    await Profile.create({user:user.id,games:{name:'',genre:'',comment:''}})
 
 
     const payload = {

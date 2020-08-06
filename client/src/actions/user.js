@@ -3,7 +3,9 @@ import {
   USERNAME_EDIT_SUCCESS,
   USERNAME_EDIT_FAIL,
   GET_ALL_USERS_SUCCESS,
-  GET_ALL_USERS_FAIL
+  GET_ALL_USERS_FAIL,
+  DELETE_ACCOUNT_FAIL,
+  LOG_OUT
 } from './types';
 
 //get all users
@@ -21,7 +23,7 @@ export const getAllUsers = () => async dispatch =>{
   } catch(err){
     dispatch({
       type:GET_ALL_USERS_FAIL,
-      payload:err.response.data.msg
+      payload:err
     })
   }
 }
@@ -47,9 +49,23 @@ export const editUsername = ({newUserName}) => async dispatch =>{
   } catch (error){
     dispatch({
       type:USERNAME_EDIT_FAIL,
-      payload:error.response.data.msg
+      payload:error
     })
 
   }
+}
 
+
+export const deleteAccount = () => async dispatch =>{
+  try{
+    const res = await axios.put('/api/user/delete-account');
+    dispatch({
+      type:LOG_OUT
+    });
+  }catch(err){
+    dispatch({
+      type:DELETE_ACCOUNT_FAIL,
+      payload:err
+    })
+  }
 }

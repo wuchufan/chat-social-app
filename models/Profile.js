@@ -9,7 +9,7 @@ const profileSchema = new Schema({
   },
 
   age:{
-    type:Number,
+    type:Number
   },
 
 
@@ -24,15 +24,21 @@ const profileSchema = new Schema({
   games:[
     {
       name:{
-        type:String
+        type:String,
+
       },
       genre:{
-        type:String
+        type:String,
+
+
       },
       comment:{
-        type:String
-      }
+        type:String,
+
+      },
+
     }
+
   ],
   social:{
     github:{

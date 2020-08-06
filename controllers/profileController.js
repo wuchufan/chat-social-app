@@ -52,6 +52,9 @@ exports.createOrUpdateUserProfile = async (req, res) => {
     profileData.social.facebook = facebook;
   profileData.games = [];
   if (games){
+    games.forEach((game,idx)=>{
+      if(idx > 0 && !game.name) games.pop();
+    })
     profileData.games = profileData.games.concat(games);
   }
 
