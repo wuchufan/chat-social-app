@@ -1,10 +1,11 @@
 import React, {Fragment, useEffect, useState} from 'react';
-import {Link} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import classes from './EditProfile.module.scss';
 import {connect} from 'react-redux';
 import {getCurrentProfile, editProfile} from '../../../../actions/profile';
 import {editUsername} from '../../../../actions/user';
 import NavBar from '../../NavBar/NavBar';
+import Button from '../../../UI/Buttons/ProfileButton/ProfileButton';
 
 const EditProfile = ({
   history,
@@ -79,6 +80,11 @@ const EditProfile = ({
       [e.target.name]: e.target.value
     })
   }
+
+  const goBackHanlder = () =>{
+    history.push({pathname:'/profile'})
+  }
+
   return (<Fragment>
     <NavBar/>
     <section className={classes['container']}>
@@ -123,18 +129,14 @@ const EditProfile = ({
           <input placeholder='Facebook' className={classes['input']} name='facebook' value={facebook} onChange={(e) => onChange(e)}/>
         </div>
         <div className={classes['button-group']}>
-          <button className={classes['button']} type='submit'>
-            Submit
-          </button>
-          <Link className={classes['button--back']} to='/profile'>
-            Back
-          </Link>
+          <Button color={'info'}>Confirm edit</Button>
+          <Button click={goBackHanlder} color={'dark'}>Back</Button>
         </div>
       </form>
     </section>
   </Fragment>);
 }
 
-const mapStateToProps = state => ({profile: state.profile, auth: state.auth})
+const mapStateToProps = state => ({profile: state.profile, auth: state.auth});
 
-export default connect(mapStateToProps, {getCurrentProfile, editUsername, editProfile})(EditProfile);
+export default connect(mapStateToProps, {getCurrentProfile, editUsername, editProfile})(withRouter(EditProfile));

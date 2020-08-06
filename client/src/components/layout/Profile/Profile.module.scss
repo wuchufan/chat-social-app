@@ -3,13 +3,10 @@
   padding-top:$push-down-padding;
   display:flex;
   flex-direction:column;
-  // grid-template-columns: auto 2fr;
-  // grid-template-areas:'avatar profile ';
-  // justify-content: center;
   max-width:$max-width;
   margin: 0 auto;
   border-radius:2.5px;
-  // grid-gap:10rem;
+  margin-bottom: 15rem;
 }
 
 .avatar{

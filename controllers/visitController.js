@@ -3,20 +3,20 @@ const visitAPIFeatures = require('../utils/visitAPIFeatures');
 
 
 exports.getVisitStats = async (req, res)=>{
+  let pipeline = [{
+          $group:{
+            _id:'$ipAddress',
+            visitNum:{$sum: 1},
+            firstTimeVisit:{$min: '$timeVisited'},
+            lastTimeVisit:{$max:'$timeVisited'}
+          }
+        },
+        {
+          $sort:{visitNum:-1}
+        }];
+  if(req.query.total) pipeline.push({$count:'number of differnet IP'});
   try{
-    const stats = await Visitor.aggregate([
-      {
-        $group:{
-          _id:'$ipAddress',
-          visitNum:{$sum: 1},
-          firstTimeVisit:{$min: '$timeVisited'},
-          lastTimeVisit:{$max:'$timeVisited'}
-        }
-      },
-      {
-        $sort:{visitNum:-1}
-      }
-    ]);
+    const stats = await Visitor.aggregate(pipeline);
 
     res.json({stats})
 

@@ -6,15 +6,15 @@ const Info = ({
   profile: {
     user:{
       email,
-      username,
-      age
+      username
     },
     education,
     social,
-    game
+    game,
+    age
   }
 }) => {
-
+  console.log(age);
   return (<div className={classes['container']}>
     {/* BASIC INFO */}
     {
