@@ -15,7 +15,7 @@ const AddChannel = ({updateRooms, rooms, socket}) => {
       }}/>
       <span role='button' className={classes['button']}>
 
-        <i className={"fas fa-plus"+ ' ' + classes['icon']} onClick={()=>{
+        <i className={`fas fa-plus ${classes['icon']}`} onClick={()=>{
         if(channelName) socket.emit('addRoom',{ channelName });
         setChannel('');
       }}></i>

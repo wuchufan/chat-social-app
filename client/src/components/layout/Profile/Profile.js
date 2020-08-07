@@ -29,7 +29,7 @@ const Profile = ({
       clearProfile();
     }
 
-  },[getCurrentProfile]);
+  },[getCurrentProfile,clearProfile,location.search]);
 
 
 

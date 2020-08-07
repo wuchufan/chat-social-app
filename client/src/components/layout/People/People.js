@@ -6,7 +6,7 @@ import Title from './Title/Title';
 import Members from './Members/Members';
 
 
-const People = ({}) => {
+const People = () => {
 
   return (<>
     <NavBar/>

@@ -4,7 +4,7 @@ import localCls from './Games.module.scss';
 const Games = ({classes, games}) => {
   let render = games.map((el,i) => {
 
-      if(!el.name && (i === 0)) return ((<div className={localCls['games'] + ' ' + classes['item']}>
+      if(!el.name && (i === 0)) return ((<div key={i} className={localCls['games'] + ' ' + classes['item']}>
         <p className={classes['field']}>Profile not added</p>
       </div>));
       return (

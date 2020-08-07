@@ -1,5 +1,4 @@
 import React from 'react';
-import localCls from './BasicInfo.module.scss';
 
 const BasicInfo = ({
   age,

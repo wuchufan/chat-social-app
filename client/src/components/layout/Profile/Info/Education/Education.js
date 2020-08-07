@@ -1,5 +1,4 @@
 import React from 'react';
-import localCls from './Education.module.scss';
 
 const Education = ({
   classes,

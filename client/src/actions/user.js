@@ -58,7 +58,7 @@ export const editUsername = ({newUserName}) => async dispatch =>{
 
 export const deleteAccount = () => async dispatch =>{
   try{
-    const res = await axios.put('/api/user/delete-account');
+    await axios.put('/api/user/delete-account');
     dispatch({
       type:LOG_OUT
     });

@@ -9,8 +9,7 @@ import {
   AUTH_ERROR,
   LOG_OUT,
   CLEAR_ERR_MESSAGE,
-  AUTH_LOADING,
-  CLEAR_PROFILE
+  AUTH_LOADING
 } from './types';
 
 
