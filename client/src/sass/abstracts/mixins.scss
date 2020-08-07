@@ -5,3 +5,72 @@
   object-fit: cover;
   border-radius:inherit;
 }
+
+
+@mixin centerize{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+
+//MEDIA QUERY MANAGER
+/*
+0 - 320px: Mobile S
+320 - 375px: Mobile M
+375 - 425px: Mobile L
+425 - 768px: Tablet
+768 - 1024px: Laptop
+1024 - 1440px: Laptop L
+1440 - 1920px: defualt
+1920 - 2560px: Desktop L
+
+*/
+
+//ORDER: Base + typography > general layout + grid > page layout > components
+@mixin respond($breakpoint) {
+  @if $breakpoint == mobileS {
+    @media(max-width: 20em) {
+      //320px
+      @content
+    };
+  }
+
+  @if $breakpoint == mobileM{
+    @media(max-width:23.5em){
+      //375px
+      @content
+    };
+  }
+
+  @if $breakpoint == mobileL{
+    @media(max-width:26.6em){
+      //425px
+      @content
+    };
+  }
+  @if $breakpoint == tablet{
+    @media(max-width:48em){
+      //768px
+      @content
+    };
+  }
+  @if $breakpoint == laptop{
+    @media(max-width:64em){
+      //1024px
+      @content
+    };
+  }
+  @if $breakpoint == laptopL{
+    @media(max-width:90em){
+      //1440px
+      @content
+    };
+  }
+  @if $breakpoint == desktopL{
+    @media(max-width:160em){
+      //2560px
+      @content
+    };
+  }
+}

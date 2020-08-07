@@ -1,9 +1,11 @@
 @import '../../../sass/main';
 
 .landing{
-  height:100vh;
-  width:100%;
+  min-height:100vh;
   background:url('../../../assets/img/simple-codeline.svg'), rgba(#2b3137,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
 
 }
@@ -13,10 +15,27 @@
   grid-template-areas:'title form';
   justify-content: center;
   align-items: center;
-  height:100%;
   max-width:$max-width;
   margin:0 auto;
 
+  @include respond(laptopL){
+    width:90%;
+    margin:10rem auto;
+
+  }
+
+  @include respond(tablet){
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    'title'
+    'form';
+    grid-row-gap:10rem;
+    width:60%;
+  }
+  @include respond(mobileL){
+    grid-row-gap: 5rem;
+    width:90%;
+  }
 }
 
 
@@ -24,6 +43,19 @@
   grid-area: title;
   color:$color-white;
   width:90%;
+  @include respond(laptopL){
+    position:relative;
+    top:-10rem;
+  }
+
+  @include respond(tablet){
+    position:static;
+    top:0;
+  }
+
+  @include respond(mobileL){
+    text-align: center;
+  }
 
   &--big{
     font-size: 6.4rem;
@@ -37,4 +69,8 @@
 
 .form{
   grid-area:form;
+  @include respond(laptop){
+    //
+    // padding:10rem 5rem;
+  }
 }

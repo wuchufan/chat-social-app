@@ -7,4 +7,29 @@
 html{
   font-size: 62.5%;
   font-family: 'Raleway Regular';
+  @include respond(desktopL){
+  font-size:62.5%;
+  }
+  @include respond(laptopL){
+  font-size:62.5%;
+}
+
+@include respond(laptop){
+  font-size:56.25%; //9px
+}
+
+@include respond(tablet){
+  font-size:56.25%; //1rem = 9px
+}
+
+@include respond(mobileL){
+  font-size:53.12%; //1rem = 8.5px
+}
+
+@include respond(mobileM){
+  font-size:50%;
+}
+@include respond(mobileS){
+  font-size:50%;
+}
 }
