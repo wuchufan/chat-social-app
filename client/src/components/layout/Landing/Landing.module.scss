@@ -46,16 +46,17 @@
   @include respond(laptopL){
     position:relative;
     top:-10rem;
+    
   }
 
   @include respond(tablet){
     position:static;
+    text-align: center;
     top:0;
+    width:100%;
   }
 
-  @include respond(mobileL){
-    text-align: center;
-  }
+
 
   &--big{
     font-size: 6.4rem;

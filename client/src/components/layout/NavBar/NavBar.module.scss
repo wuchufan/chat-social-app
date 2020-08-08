@@ -1,7 +1,9 @@
+@import '../../../sass/main';
+
 .container{
   position:fixed;
   display:grid;
-  grid-template-columns:.5fr 1fr 1fr 1fr .5fr;
+  grid-template-columns:.2fr 0.5fr 1fr 1fr .5fr;
   grid-template-areas: '. icon . nav .';
   background-color: #24292e;
   opacity:0.8;
@@ -9,6 +11,20 @@
   width:100%;
   font-size: 2rem;
   color:#fff;
+  z-index:999;
+
+  @include respond(mobileL){
+    grid-template-columns: 1fr;
+    grid-template-rows:repeat(3,auto);
+    grid-template-areas:
+    'icon'
+    'button'
+    'nav';
+    position:static;
+    justify-items:center;
+    align-items: center;
+    padding:0;
+  }
 
   & a:link,
   & a:visited{
@@ -28,6 +44,9 @@
   font-weight:600;
   letter-spacing: 2px;
   width: max-content;
+  @include respond(mobileL){
+    margin: 3rem 0;
+  }
 }
 .navbar{
   grid-area:nav;
@@ -37,5 +56,39 @@
   justify-content: space-around;
   list-style: none;
   align-items: center;
+  @include respond(mobileL){
+    flex-direction:column;
+    align-items: start;
+    justify-self: start;
+    background-color:black;
+    width:100%;
+    overflow:hidden;
+    height:0;
+    transition:all 0.2s ease;
+    padding:0 0 0 2rem;
+  }
+}
+
+.nav-toggle-button{
+  display:none;
+  width:100%;
+  @include respond(mobileL){
+    grid-area:button;
+    display: block;
+    background-color:black;
+  }
+}
+
+.show-nav{
+  @include respond(mobileL){
+    height:20rem;
+  }
+}
+
+.main-color{
+background-color: #24292e;
+  @include respond(mobileL){
+      background-color: black;
+  }
 
 }

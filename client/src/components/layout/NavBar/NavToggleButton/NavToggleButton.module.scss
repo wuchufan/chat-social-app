@@ -1,0 +1,26 @@
+.button{
+
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2rem;
+
+  &__line-group{
+    margin-right:2rem;
+  }
+
+  &__line{
+
+    height:.3rem;
+    background-color:#fff;
+    width:2rem;
+    margin:.5rem 0;
+    border-radius: 2.5px;
+  }
+
+  &__title{
+    font-size: 2rem;
+    color:#fff;
+  }
+}
