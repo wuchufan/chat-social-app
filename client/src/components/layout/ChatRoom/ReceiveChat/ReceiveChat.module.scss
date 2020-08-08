@@ -1,5 +1,9 @@
 @import '../../../../sass/main';
 
+$message-columns-laptopL:10%;
+$message-columns-laptop:15%;
+$message-columns-tablet:20%;
+
 .message{
   display:grid;
   grid-template-columns: 5% auto 1fr;
@@ -10,8 +14,16 @@
   margin-bottom:1rem;
   grid-gap:1rem;
   align-items: end;
+  @include respond(laptopL){
+    grid-template-columns: $message-columns-laptopL auto 1fr;
+  }
+  @include respond(laptop){
+    grid-template-columns: $message-columns-laptop auto 1fr;
+  }
 
-
+  @include respond(tablet){
+    grid-template-columns: $message-columns-tablet auto 1fr;
+  }
 
   &--hover{
       visibility: hidden;
@@ -65,6 +77,27 @@
     grid-area:message;
     align-self: stretch;
 
+  }
+
+  &--show-full{
+    grid-template-areas:'date message';
+    grid-template-columns: 5% auto;
+
+    @include respond(laptopL){
+      grid-template-columns: $message-columns-laptopL auto;
+    }
+
+    @include respond(laptop){
+      grid-template-columns:$message-columns-laptop auto;
+    }
+
+    @include respond(tablet){
+          grid-template-columns: $message-columns-tablet auto;
+    }
+  }
+
+  &--is-first{
+      margin-top:5rem;
   }
 
 

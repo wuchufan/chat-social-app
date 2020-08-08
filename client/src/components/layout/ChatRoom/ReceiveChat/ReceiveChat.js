@@ -35,13 +35,23 @@ const ReceiveChat = ({
       </Fragment>)
   }
 
+  let messageClass = classes['message'];
+  if(!showFull){
+      messageClass = `${classes['message']} ${classes['message--show-full']}`;
+  } else{
+    if(!isFirst){
+      messageClass = `${classes['message']} ${classes['message--is-first']}`;
+    }
+  }
+  // style={!showFull ? {
+  //   gridTemplateAreas:"'date message'",
+  //   gridTemplateColumns: '5% auto'
+  // }: !isFirst ? {
+  //   marginTop:5+'rem'
+  // }: null}
+
   return (
-    <div style={!showFull ? {
-      gridTemplateAreas:"'date message'",
-      gridTemplateColumns: '5% auto'
-    }: !isFirst ? {
-      marginTop:5+'rem'
-    }: null} className={classes['message']}>
+    <div className={messageClass}>
 
       {renderFull}
 
