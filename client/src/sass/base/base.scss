@@ -12,6 +12,7 @@ html {
   }
   @include respond(laptopL) {
     font-size: 62.5%;
+    height:100%;
   }
   @include respond(laptop) {
     font-size: 56.25%; //9px
@@ -27,5 +28,11 @@ html {
   }
   @include respond(mobileS) {
     font-size: 53.12%;
+  }
+}
+
+body{
+  @include respond(laptopL){
+    min-height:100%;
   }
 }

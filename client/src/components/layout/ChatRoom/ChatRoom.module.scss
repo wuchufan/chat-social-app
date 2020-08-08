@@ -11,12 +11,26 @@ $navbar-padding:2rem;
   grid-template-areas:
   "navbar channel header header"
   "navbar channel chat-room member-bar"
-  "navbar channel chat-bar member-bar"
+  "navbar channel chat-bar member-bar";
+
+  @include respond(laptopL){
+    grid-template-columns: 7% 20% 1fr 20%;
+  }
+    @include respond(laptop){
+      grid-template-columns: 7% 20% 1fr 20%;
+    }
+
+    @include respond(tablet){
+      grid-template-columns: 10% 25% 1fr 20%;
+    }
+
 }
+
+
+
 .items{
   font-size: 3rem;
   color:#fff;
-
 }
 .navbar{
   display:flex;
@@ -67,7 +81,10 @@ $navbar-padding:2rem;
 
   &__add-channel{
     grid-row:3 / 4;
-    padding:2rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding-left:2rem;
 
   }
 }
