@@ -3,32 +3,18 @@ import classes from './NavBar.module.scss';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { logout } from '../../../../actions/auth';
+import NavItem from './NavItem/NavItem';
 
 const NavBar = ({ logout }) => {
+
   return (
       <ul style={{
         width:'100%'
-      }}>
-        <li className={classes['container']}>
+      }} className={classes['container-2']}>
 
-        <NavLink to='/profile' className={classes['navbar__item']}>
-        <span role='button' className={classes['button__outer']}>
+      <NavItem icon={'far fa-id-card'} to={'/profile'}>Profile</NavItem>
+      <NavItem rotateIcon={true} icon={'fas fa-sign-out-alt'} to={'/'} click={logout}>Log out</NavItem>
 
-          <span className={classes['tool-tip']+' '+classes['tool-tip--profile']}></span>
-            <i className={`far fa-id-card ${classes['icon']}`}></i>
-        </span>
-        </NavLink>
-        </li>
-
-        <li className={classes['container']}>
-
-        <NavLink to='/' onClick={logout} className={classes['navbar__item']}>
-        <span role='button' className={classes['button__outer']}>
-          <span className={classes['tool-tip']+' '+ classes['tool-tip--logout']}></span>
-            <i className={`fas fa-sign-out-alt ${classes['icon']} ${classes['rotate']}`}></i>
-        </span>
-        </NavLink>
-        </li>
       </ul>
   );
 }
