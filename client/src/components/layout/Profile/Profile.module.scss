@@ -7,6 +7,11 @@
   margin: 0 auto;
   border-radius:2.5px;
   margin-bottom: 15rem;
+
+  @include respond(tablet){
+    padding-top:0;
+  }
+
 }
 
 .avatar{
@@ -62,6 +67,6 @@
   grid-area:profile;
   width:100%;
   border-radius: inherit;
-  // align-self: center;
+
 
 }

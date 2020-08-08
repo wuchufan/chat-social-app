@@ -1,3 +1,5 @@
+@import '../../../../sass/main';
+
 $title-color: #17a2b8;
 
 .container {
@@ -6,7 +8,9 @@ $title-color: #17a2b8;
   grid-gap: 1.5rem;
   border-radius: inherit;
   margin-bottom:3rem;
-
+  @include respond(mobileS){
+    grid-template-columns:1fr;
+  }
   & > div {
     border-radius: inherit;
   }

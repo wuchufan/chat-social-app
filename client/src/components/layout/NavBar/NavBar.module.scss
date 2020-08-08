@@ -13,7 +13,7 @@
   color:#fff;
   z-index:999;
 
-  @include respond(mobileL){
+  @include respond(tablet){
     grid-template-columns: 1fr;
     grid-template-rows:repeat(3,auto);
     grid-template-areas:
@@ -44,7 +44,9 @@
   font-weight:600;
   letter-spacing: 2px;
   width: max-content;
-  @include respond(mobileL){
+
+
+  @include respond(tablet){
     margin: 3rem 0;
   }
 }
@@ -56,7 +58,7 @@
   justify-content: space-around;
   list-style: none;
   align-items: center;
-  @include respond(mobileL){
+  @include respond(tablet){
     flex-direction:column;
     align-items: start;
     justify-self: start;
@@ -72,7 +74,7 @@
 .nav-toggle-button{
   display:none;
   width:100%;
-  @include respond(mobileL){
+  @include respond(tablet){
     grid-area:button;
     display: block;
     background-color:black;
@@ -80,14 +82,14 @@
 }
 
 .show-nav{
-  @include respond(mobileL){
+  @include respond(tablet){
     height:20rem;
   }
 }
 
 .main-color{
 background-color: #24292e;
-  @include respond(mobileL){
+  @include respond(tablet){
       background-color: black;
   }
 
