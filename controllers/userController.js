@@ -6,7 +6,8 @@ const Profile = require('../models/Profile');
 
 exports.getAllUsers = async (req,res)=>{
   try{
-    const profiles = await Profile.find().populate('user').select('-password');
+    const profiles = await Profile.find().populate('user','-password');
+
     res.json({msg:profiles});
 
   } catch(err){

@@ -12,7 +12,10 @@ exports.getVisitStats = async (req, res)=>{
           }
         },
         {
-          $sort:{visitNum:-1}
+          $sort:{
+            visitNum:-1,
+            lastTimeVisit:-1
+          }
         }];
   if(req.query.total) pipeline.push({$count:'number of differnet IP'});
   try{
