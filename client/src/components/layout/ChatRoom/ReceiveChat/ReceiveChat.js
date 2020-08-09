@@ -43,12 +43,7 @@ const ReceiveChat = ({
       messageClass = `${classes['message']} ${classes['message--is-first']}`;
     }
   }
-  // style={!showFull ? {
-  //   gridTemplateAreas:"'date message'",
-  //   gridTemplateColumns: '5% auto'
-  // }: !isFirst ? {
-  //   marginTop:5+'rem'
-  // }: null}
+
 
   return (
     <div className={messageClass}>

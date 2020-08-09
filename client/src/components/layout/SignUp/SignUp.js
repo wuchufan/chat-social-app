@@ -55,7 +55,7 @@ const SignUp = ({
         <div className={classes['form__input']}>
           <div className={classes['input-container']}>
             <h5 className={classes['label']}>Username</h5>
-            <input className={classes['input']} placeholder='you can use the guest account in SignIn :)' value={username} type='text' name='username' onChange={(e) => onChange(e)} autoComplete='off' required/>
+            <input className={classes['input']} placeholder='Guest account is ready in SignIn' value={username} type='text' name='username' onChange={(e) => onChange(e)} autoComplete='off' required/>
           </div>
           <div className={classes['input-container']}>
             <h5 className={classes['label']}>Email</h5>

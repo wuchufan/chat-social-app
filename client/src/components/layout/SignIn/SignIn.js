@@ -19,7 +19,7 @@ const SignIn = ({
   setAccount
 }) => {
 
-  const [formData, setForm] = useState({email: '', password: ''});
+  const [formData, setForm] = useState({email: 'guest@gmail.com', password: 'guest'});
   const {email, password} = formData;
 
   const onChange = (e) => {
