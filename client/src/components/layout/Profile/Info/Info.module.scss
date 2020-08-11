@@ -8,9 +8,12 @@ $title-color: #17a2b8;
   grid-gap: 1.5rem;
   border-radius: inherit;
   margin-bottom:3rem;
-  @include respond(mobileS){
+
+  @include respond(mobileL){
     grid-template-columns:1fr;
   }
+
+
   & > div {
     border-radius: inherit;
   }

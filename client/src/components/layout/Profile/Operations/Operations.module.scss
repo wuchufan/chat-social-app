@@ -1,5 +1,12 @@
+@import '../../../../sass/main';
+
 .container{
     width:100%;
     display:flex;
     flex-direction:row;
+
+    @include respond(laptop){
+      width:95%;
+      margin:auto;
+    }
 }

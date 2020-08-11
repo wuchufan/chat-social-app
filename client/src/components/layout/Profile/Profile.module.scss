@@ -67,6 +67,9 @@
   grid-area:profile;
   width:100%;
   border-radius: inherit;
-
+  @include respond(laptop){
+    width:95%;
+    margin:auto;
+  }
 
 }
