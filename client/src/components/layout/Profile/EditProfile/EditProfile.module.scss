@@ -6,7 +6,11 @@
   margin: 0 auto 10rem;
   display:flex;
   flex-direction: column;
-
+  @include respond(tablet){
+    width:95%;
+    margin:auto;
+    margin-bottom:10rem;
+  }
 
 }
 .intro{
