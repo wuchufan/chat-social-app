@@ -1,0 +1,18 @@
+@import '../../../../../sass/main';
+
+.title{
+  margin-left:20rem;
+  margin-bottom: 5rem;
+  padding-bottom:1rem;
+  width:max-content;
+  font-size:2rem;
+  font-weight:lighter;
+  border-bottom: solid .1rem $color-profile;
+  text-transform:uppercase;
+}
+
+.pagination-container{
+  margin-top:20rem;
+  display:flex;
+  justify-content: center;
+}

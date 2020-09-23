@@ -12,7 +12,9 @@
   font-size: 2rem;
   color:#fff;
   z-index:999;
-
+  @include respond(desktopL){
+    grid-template-columns:.2fr 0.5fr 1fr 2fr .5fr;
+  }
   @include respond(tablet){
     grid-template-columns: 1fr;
     grid-template-rows:repeat(3,auto);

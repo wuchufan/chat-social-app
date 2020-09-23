@@ -1,0 +1,43 @@
+
+
+.container{
+  display:grid;
+  grid-template-columns: 15rem 1fr;
+  grid-column-gap:5rem;
+  color:#333;
+}
+
+.creator-info-container{
+  display:flex;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color:#72767d;
+  &__date{
+    display:inline-block;
+    margin-right:1rem;
+
+
+  }
+}
+
+
+.post-container{
+  &__title{
+      font-size: 3rem;
+      margin-bottom: 3rem;
+  }
+
+  &__intro{
+    font-size:1.6rem;
+    margin-bottom: 3rem;
+  }
+}
+
+
+.media-info-container{
+  display:flex;
+  font-size:1.3rem;
+  &__comments{
+    margin-right:2rem;
+  }
+}

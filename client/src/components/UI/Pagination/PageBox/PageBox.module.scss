@@ -1,0 +1,14 @@
+@import '../../../../sass/main';
+.container{
+  padding:1rem 1.3rem;
+  cursor:pointer;
+  border-radius:2px;
+  transition:all .2s ease;
+  margin-right:1rem;
+  font-size: 1.3rem;
+
+  &:hover{
+    background-color:$color-profile;
+    color:white;
+  }
+}

@@ -27,16 +27,22 @@ const NavBar = ({
 
   const guestNav = (<Fragment>
 
-    <NavLink activeClassName={classes['active']} exact={true} to='/' className={classes['navbar__item']}>
-      Main
+
+    <NavLink activeClassName={classes['active']} exact={true} to='/forum' className={classes['navbar__item']}>
+      Forum
     </NavLink>
     <NavLink activeClassName={classes['active']} exact={true} to='/people' className={classes['navbar__item']}>
       People
     </NavLink>
-    {/* </div> */}
+    <NavLink activeClassName={classes['active']} exact={true} to='/' className={classes['navbar__item']}>
+      Main
+    </NavLink>
   </Fragment>);
 
   const authNav = (<Fragment>
+    <NavLink activeClassName={classes['active']} exact={true} to='/forum' className={classes['navbar__item']}>
+      Forum
+    </NavLink>
     <NavLink activeClassName={classes['active']} exact={true} to='/chat-room' className={classes['navbar__item']}>
       Chat Room
     </NavLink>

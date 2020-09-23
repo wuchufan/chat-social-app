@@ -8,6 +8,7 @@ import Profile from './components/layout/Profile/Profile';
 import EditProfile from './components/layout/Profile/EditProfile/EditProfile';
 import ChatRoom from './components/layout/ChatRoom/ChatRoom';
 import People from './components/layout/People/People';
+import Forum from './components/layout/Forum/Forum';
 
 import { loadUser } from './actions/auth';
 import setAuthState from './uti/setAuthState';
@@ -21,6 +22,7 @@ import increaseVisitCount from './uti/increaseVisitCount';
 
 //css
 import './App.module.scss';
+
 
 if(localStorage.token){
   setAuthState(localStorage.token);
@@ -46,6 +48,7 @@ const App = () => {
         <PrivateRoute exact path='/profile/edit-profile' component={EditProfile}/>
         <Route exact path='/' component={Landing}/>
         <Route exact path='/people' component={People}/>
+        <Route exact path='/forum' component={Forum}/>
       </Switch>
     </Fragment>
   </Router>
