@@ -2,8 +2,11 @@ const Post = require('../models/Post');
 
 exports.getAllPost = async (req, res) => {
   try {
-    const post = await Post.find();
-    res.status(200).json({post});
+    let posts = Post.find().populate('user','-password');
+
+    queryPosts = await posts;
+
+    res.status(200).json(queryPosts);
 
   } catch (err) {
 

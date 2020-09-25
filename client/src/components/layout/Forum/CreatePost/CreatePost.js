@@ -38,7 +38,7 @@ const CreatePost = ({
     } else {
       setShouldBlockNav(false);
     }
-  },[title,content]);
+  },[title,content,tag]);
 
 
 

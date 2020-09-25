@@ -1,10 +1,13 @@
 import {
+  GET_ALL_POSTS_FAIL,
+  GET_ALL_POSTS_SUCCESS,
   EDIT_POST_SUCCESS,
   EDIT_POST_FAIL,
-  EDIT_POST_LOADING
+  POST_LOADING
 } from '../actions/types';
 
 const initialState = {
+  posts:null,
   loading:false,
   errorMessage:null
 }
@@ -13,8 +16,22 @@ const initialState = {
 export default function(state = initialState, action){
   const { type, payload } = action;
 
+
   switch(type){
-    case EDIT_POST_LOADING:
+    case GET_ALL_POSTS_SUCCESS:
+    return{
+      ...state,
+      posts:payload,
+      loading:false
+    }
+    case GET_ALL_POSTS_FAIL:
+    return{
+      ...state,
+      errorMessage:payload,
+      loading:false
+    }
+    
+    case POST_LOADING:
     return{
       ...state,
       loading:true

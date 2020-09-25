@@ -3,7 +3,7 @@ import cls from './AllPosts.module.scss';
 import Post from '../Post/Post';
 import Pagination from '../../../../UI/Pagination/Pagination';
 
-const AllPosts = ({}) => {
+const AllPosts = () => {
   return (
     <div className={cls['container']}>
       <h1 className={cls['title']}>All Posts</h1>

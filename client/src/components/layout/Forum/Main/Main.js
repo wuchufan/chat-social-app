@@ -3,7 +3,7 @@ import NewPosts from './NewPosts/NewPosts';
 import AllPosts from './AllPosts/AllPosts';
 import cls from './Main.module.scss';
 
-const Main = ({}) => {
+const Main = () => {
   return (
     <section className={cls['container']}>
       <NewPosts/>

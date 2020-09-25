@@ -1,5 +1,4 @@
 import React from 'react';
-import cls from './Pagination.module.scss';
 import PageBox from './PageBox/PageBox';
 
 
