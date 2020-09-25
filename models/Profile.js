@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const profileSchema = new Schema({
   user:{
     type:mongoose.Schema.Types.ObjectId,
-    ref:'user'
+    ref:'user' //look for user model in db
   },
 
   age:{

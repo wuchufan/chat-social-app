@@ -22,6 +22,7 @@ app.use('/api/visit',require('./routes/api/visit'));
 app.use('/api/auth',require('./routes/api/auth'));
 app.use('/api/profile',require('./routes/api/profile'));
 app.use('/api/user',require('./routes/api/user'));
+app.use('/api/post',require('./routes/api/post'));
 
 
 

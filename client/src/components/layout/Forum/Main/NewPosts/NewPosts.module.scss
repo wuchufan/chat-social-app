@@ -7,12 +7,19 @@
 }
 
 .title{
+  display:flex;
+  justify-content: space-between;
+  align-items: flex-start;
   margin-left:20rem;
   margin-bottom: 5rem;
-  padding-bottom:1rem;
-  width:max-content;
-  font-size:2rem;
-  font-weight:lighter;
-  border-bottom: solid .1rem $color-profile;
-  text-transform:uppercase;
+
+
+  &__text{
+    display:inline-block;
+    text-transform:uppercase;
+    border-bottom: solid .1rem $color-profile;
+    font-size:2rem;
+    font-weight:lighter;
+    padding-bottom:1rem;
+  }
 }

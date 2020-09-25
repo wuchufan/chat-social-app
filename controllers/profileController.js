@@ -3,7 +3,7 @@ const Profile = require('../models/Profile');
 exports.getUserProfile = async (req, res) => {
   try {
 
-    let profile = await Profile.findOne({user: req.user.id}).populate('user', '-password');
+    let profile = await Profile.findOne({user: req.user.id}).populate('user', '-password'); //populate user in profile model
     if (!profile)
       return res.status(400).json({msg: 'no profile is found'});
 

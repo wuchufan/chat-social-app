@@ -9,7 +9,7 @@ const Post = ({}) => {
     </div>
     <div className={cls['post-container']}>
       <div className={cls['creator-info-container']}>
-        <date className={cls['creator-info-container__date']}>FEBRUARY 01, 2020</date>
+        <p className={cls['creator-info-container__date']}>FEBRUARY 01, 2020</p>
         <p className={cls['creator-info-container__author']}>by Donal Trump</p>
       </div>
 

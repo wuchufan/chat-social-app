@@ -9,6 +9,7 @@ import EditProfile from './components/layout/Profile/EditProfile/EditProfile';
 import ChatRoom from './components/layout/ChatRoom/ChatRoom';
 import People from './components/layout/People/People';
 import Forum from './components/layout/Forum/Forum';
+import CreatePost from './components/layout/Forum/CreatePost/CreatePost';
 
 import { loadUser } from './actions/auth';
 import setAuthState from './uti/setAuthState';
@@ -46,6 +47,7 @@ const App = () => {
         <PrivateRoute exact path='/chat-room' component={ChatRoom}/>
         <PrivateRoute exact path='/profile' component={Profile}/>
         <PrivateRoute exact path='/profile/edit-profile' component={EditProfile}/>
+        <PrivateRoute exact path='/forum/create-post' component={CreatePost}/>
         <Route exact path='/' component={Landing}/>
         <Route exact path='/people' component={People}/>
         <Route exact path='/forum' component={Forum}/>

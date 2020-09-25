@@ -7,7 +7,6 @@ const Main = ({}) => {
   return (
     <section className={cls['container']}>
       <NewPosts/>
-      <br/>
       <AllPosts/>
     </section>
   );
