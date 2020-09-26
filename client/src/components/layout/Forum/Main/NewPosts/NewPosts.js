@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getAllPosts } from '../../../../../actions/post';
 import cls from './NewPosts.module.scss';
 import Post from '../Post/Post';
 import Button from '../../../../UI/Buttons/ProfileButton/ProfileButton';
@@ -15,14 +14,9 @@ const NewPosts = ({
   },
   posts:{
     posts
-  },
-  getAllPosts
+  }
+
 }) => {
-
-
-  useEffect(()=>{
-    getAllPosts();
-  },[]);
 
   const buttonHandler = () =>{
     history.push({pathname:'/forum/create-post'});
@@ -35,19 +29,22 @@ const NewPosts = ({
         {isAuthenticated ?  <Button click={()=>buttonHandler()} type='button' color='info'>Create Post</Button> : null}
       </div>
       {posts ? posts.map((post,i)=>{
-        if(i > 2) return
+        if(i > 1) {
+          return
+        } else{
         return <Post {...post} key={i}/>
-      }) : null}
-      {/* <Post/> */}
+        }
+      }) : null
+    }
+
     </div>
   );
 }
 
 
 const mapStateToProps = state =>({
-  auth:state.auth,
-  posts:state.post
+  auth:state.auth
 })
 
 
-export default connect(mapStateToProps, { getAllPosts })(withRouter(NewPosts));
+export default connect(mapStateToProps)(withRouter(NewPosts));

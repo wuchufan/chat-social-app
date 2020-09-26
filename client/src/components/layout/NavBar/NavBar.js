@@ -29,7 +29,7 @@ const NavBar = ({
 
 
     <NavLink activeClassName={classes['active']} exact={true} to='/forum' className={classes['navbar__item']}>
-      Forum
+      Posts
     </NavLink>
     <NavLink activeClassName={classes['active']} exact={true} to='/people' className={classes['navbar__item']}>
       People
@@ -41,7 +41,7 @@ const NavBar = ({
 
   const authNav = (<Fragment>
     <NavLink activeClassName={classes['active']} exact={true} to='/forum' className={classes['navbar__item']}>
-      Forum
+      Posts
     </NavLink>
     <NavLink activeClassName={classes['active']} exact={true} to='/chat-room' className={classes['navbar__item']}>
       Chat Room

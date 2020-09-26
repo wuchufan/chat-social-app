@@ -2,7 +2,7 @@ import React from 'react';
 import Moment from 'react-moment';
 import cls from './Post.module.scss';
 import Tag from './Tag/Tag';
-
+import { reduceParagraphLength } from '../../../../../uti/reduceParagraphLength';
 
 const Post = ({
   tag,
@@ -14,6 +14,13 @@ const Post = ({
   date,
   image
 }) => {
+  const contentLength = 30;
+  let shortContent;
+  if(content.split(' ').length > contentLength){
+    shortContent = reduceParagraphLength(content, contentLength);
+  } else{
+    shortContent = content;
+  }
 
 
   return (<article className={cls['container']}>
@@ -30,7 +37,7 @@ const Post = ({
       </div>
 
       <h1 className={cls['post-container__title']}>{title}</h1>
-      <p className={cls['post-container__intro']}>{content}</p>
+      <p className={cls['post-container__intro']}>{shortContent}{shortContent !== content ? '...' : null}</p>
 
       <div className={cls['tags']}>
         <Tag>game</Tag>
@@ -41,7 +48,6 @@ const Post = ({
           <div className={cls['media-info-container__comments']}>{comment.length} Comment{comment.length > 0 ? 's': null}</div>
           <div className={cls['media-info-container__likes']}>{likes.length} likes{likes.length > 0 ? 's': null}</div>
         </> : null}
-
       </div>
     </div>
 

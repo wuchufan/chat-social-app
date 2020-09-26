@@ -1,8 +1,10 @@
 const Post = require('../models/Post');
 
 exports.getAllPost = async (req, res) => {
+
+
   try {
-    let posts = Post.find().populate('user','-password');
+    let posts = Post.find().populate('user','-password').sort({date:-1});
 
     queryPosts = await posts;
 
