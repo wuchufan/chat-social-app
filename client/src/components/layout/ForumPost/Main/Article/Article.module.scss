@@ -1,0 +1,28 @@
+.container{
+  color:#333;
+  border-bottom:1px solid #e5e7e9;
+}
+
+.post-info{
+  display:flex;
+  font-weight:lighter;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  color:#a1a1a7;
+  &__date{
+    margin-right:2rem;
+  }
+}
+
+.title{
+  font-size: 4rem;
+  margin-bottom: 2rem;
+}
+
+
+.content{
+  font-size: 1.6rem;
+  line-height: 2;
+  letter-spacing: 1px;
+}

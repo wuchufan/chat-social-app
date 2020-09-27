@@ -1,8 +1,8 @@
 const Post = require('../models/Post');
 
-exports.getAllPost = async (req, res) => {
 
 
+exports.getAllPosts = async (req, res) => {
   try {
     let posts = Post.find().populate('user','-password').sort({date:-1});
 
@@ -13,6 +13,15 @@ exports.getAllPost = async (req, res) => {
   } catch (err) {
 
     res.status(500).json({msg:'Server error'});
+  }
+}
+
+exports.getOnePost = async (req,res)=>{
+  try{
+    let post = await Post.findById(req.params.id).populate('user','-password');
+    res.status(200).json(post);
+  } catch(err){
+    res.status(500).json({msg:'Server error'})
   }
 }
 

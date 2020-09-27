@@ -2,13 +2,17 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../../middleware/auth');
 const {
-  getAllPost,
+  getAllPosts,
+  getOnePost,
   createPost
 } = require('../../controllers/postController');
 
 router.route('/')
-.get(getAllPost)
+.get(getAllPosts)
 .post(auth, createPost);
+
+router.route('/:id')
+.get(getOnePost);
 
 
 

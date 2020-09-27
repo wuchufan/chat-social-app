@@ -9,7 +9,9 @@ import EditProfile from './components/layout/Profile/EditProfile/EditProfile';
 import ChatRoom from './components/layout/ChatRoom/ChatRoom';
 import People from './components/layout/People/People';
 import Forum from './components/layout/Forum/Forum';
+import ForumPost from './components/layout/ForumPost/ForumPost';
 import CreatePost from './components/layout/Forum/CreatePost/CreatePost';
+
 
 import { loadUser } from './actions/auth';
 import setAuthState from './uti/setAuthState';
@@ -51,6 +53,7 @@ const App = () => {
         <Route exact path='/' component={Landing}/>
         <Route exact path='/people' component={People}/>
         <Route exact path='/forum' component={Forum}/>
+        <Route path='/forum/:id' component={ForumPost}/>
       </Switch>
     </Fragment>
   </Router>

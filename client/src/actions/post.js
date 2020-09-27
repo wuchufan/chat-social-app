@@ -1,5 +1,7 @@
 import axios from 'axios';
 import {
+  GET_ONE_POST_SUCCESS,
+  GET_ONE_POST_FAIL,
   GET_ALL_POSTS_FAIL,
   GET_ALL_POSTS_SUCCESS,
   POST_LOADING,
@@ -28,6 +30,25 @@ export const getAllPosts = () => async (dispatch) =>{
   }
 }
 
+
+export const getOnePost = (params) => async (dispatch) =>{
+  try{
+    dispatch({
+      type:POST_LOADING
+    });
+    const post = await axios.get(`/api/post/${params}`)
+    dispatch({
+      type:GET_ONE_POST_SUCCESS,
+      payload:post.data
+    })
+
+  }catch(err){
+    dispatch({
+      type:GET_ONE_POST_FAIL,
+      payload:err.response ? err.response : err
+    })
+  }
+}
 
 export const submitPost = (formData, history = null) => async (dispatch) =>{
 

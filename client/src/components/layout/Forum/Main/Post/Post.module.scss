@@ -1,4 +1,4 @@
-
+@import '../../../../../sass/main';
 
 .container{
   display:grid;
@@ -27,7 +27,15 @@
 .post-container{
   &__title{
       font-size: 3rem;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
+      display:inline-block;
+      color:#333;
+      text-decoration:none;
+      font-weight:bold;
+      transition:all .1s ease;
+      &:hover{
+        color:$color-profile;
+      }
   }
 
   &__intro{

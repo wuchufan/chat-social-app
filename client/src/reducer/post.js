@@ -1,4 +1,6 @@
 import {
+  GET_ONE_POST_SUCCESS,
+  GET_ONE_POST_FAIL,
   GET_ALL_POSTS_FAIL,
   GET_ALL_POSTS_SUCCESS,
   EDIT_POST_SUCCESS,
@@ -9,7 +11,8 @@ import {
 const initialState = {
   posts:null,
   loading:false,
-  errorMessage:null
+  errorMessage:null,
+  post:null
 }
 
 
@@ -30,7 +33,21 @@ export default function(state = initialState, action){
       errorMessage:payload,
       loading:false
     }
-    
+
+    case GET_ONE_POST_SUCCESS:
+    return{
+      ...state,
+      post:payload,
+      loading:false
+    }
+
+    case GET_ONE_POST_FAIL:
+    return{
+      ...state,
+      errorMessage:payload,
+      loading:false
+    }
+
     case POST_LOADING:
     return{
       ...state,

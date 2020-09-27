@@ -2,9 +2,11 @@ import React from 'react';
 import Moment from 'react-moment';
 import cls from './Post.module.scss';
 import Tag from './Tag/Tag';
+import { Link } from 'react-router-dom';
 import { reduceParagraphLength } from '../../../../../uti/reduceParagraphLength';
 
 const Post = ({
+  _id,
   tag,
   user,
   title,
@@ -36,7 +38,7 @@ const Post = ({
         <p className={cls['creator-info-container__author']}>by {user ? user.username : null}</p>
       </div>
 
-      <h1 className={cls['post-container__title']}>{title}</h1>
+      <Link to={`/forum/${_id}`} className={cls['post-container__title']}>{title}</Link>
       <p className={cls['post-container__intro']}>{shortContent}{shortContent !== content ? '...' : null}</p>
 
       <div className={cls['tags']}>
