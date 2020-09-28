@@ -1,0 +1,34 @@
+.container{
+  display:grid;
+  grid-template-columns: 8% 1fr;
+  grid-column-gap:2rem;
+  margin-bottom: 4rem;
+}
+
+.avatar{
+  &__img{
+    width:100%;
+    display:inline-block;
+    border-radius: 50%;
+  }
+}
+
+.comment-container{
+  display:flex;
+  flex-direction:column;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  line-height: 1.5;
+
+
+
+  &__username{
+    font-size:1.5rem;
+    font-weight:bold;
+    margin-bottom: 0.2rem;
+  }
+  &__post-date{
+    color:#a1a1a7;
+    margin-bottom: 1rem;
+  }
+}

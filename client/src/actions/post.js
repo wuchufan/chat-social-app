@@ -6,7 +6,9 @@ import {
   GET_ALL_POSTS_SUCCESS,
   POST_LOADING,
   EDIT_POST_SUCCESS,
-  EDIT_POST_FAIL
+  EDIT_POST_FAIL,
+  SUBMIT_COMMENT_SUCCESS,
+  SUBMIT_COMMENT_FAIL
 } from './types';
 
 
@@ -73,5 +75,33 @@ export const submitPost = (formData, history = null) => async (dispatch) =>{
       payload:err.response ? err.response : err
     });
 
+  }
+}
+
+export const submitComment = (formData) => async (dispatch) =>{
+  const config = {
+    "Content-Type" : "application/json"
+  }
+
+
+  try{
+
+    dispatch({
+      type:POST_LOADING
+    });
+    const submit = await axios.post('/api/post/comment',formData,config);
+
+    dispatch({
+      type:SUBMIT_COMMENT_SUCCESS
+
+    });
+
+    dispatch(getOnePost(formData.postId));
+
+  } catch(err){
+    dispatch({
+      type:SUBMIT_COMMENT_FAIL,
+      payload:err.response ? err.response:err
+    })
   }
 }

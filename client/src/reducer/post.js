@@ -1,4 +1,6 @@
 import {
+  SUBMIT_COMMENT_SUCCESS,
+  SUBMIT_COMMENT_FAIL,
   GET_ONE_POST_SUCCESS,
   GET_ONE_POST_FAIL,
   GET_ALL_POSTS_FAIL,
@@ -64,6 +66,18 @@ export default function(state = initialState, action){
     case EDIT_POST_FAIL:
     return{
       ...state,
+      loading:false,
+      errorMessage:payload
+    }
+
+    case SUBMIT_COMMENT_SUCCESS:
+    return{
+      ...state,
+      loading:false
+    }
+
+    case SUBMIT_COMMENT_FAIL:
+    return{
       loading:false,
       errorMessage:payload
     }

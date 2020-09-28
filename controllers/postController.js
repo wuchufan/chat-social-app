@@ -11,16 +11,19 @@ exports.getAllPosts = async (req, res) => {
     res.status(200).json(queryPosts);
 
   } catch (err) {
-
+    console.log(err);
     res.status(500).json({msg:'Server error'});
   }
 }
 
 exports.getOnePost = async (req,res)=>{
   try{
-    let post = await Post.findById(req.params.id).populate('user','-password');
+    let post = await Post.findById(req.params.id).populate('user','-password').populate('comment.user','-password');
+
     res.status(200).json(post);
+
   } catch(err){
+    console.log(err);
     res.status(500).json({msg:'Server error'})
   }
 }
@@ -46,6 +49,31 @@ exports.createPost = async (req, res) => {
     await post.save();
     res.json(post);
   } catch (err) {
+    console.log(err);
     res.status(500).json({msg:'Server error'});
   }
+}
+
+exports.createComment = async (req,res) =>{
+
+  const { comment, postId } = req.body;
+  const commentData = {};
+
+  commentData.user = req.user.id;
+  if(comment) commentData.text = comment;
+
+  try{
+
+    let post = await Post.findById(postId);
+    post.comment.push(commentData);
+    await post.save();
+
+    res.status(200).json(post);
+  } catch(err){
+    
+    console.log(err);
+    res.status(500).json({msg:'Server error'});
+  }
+
+
 }

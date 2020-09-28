@@ -29,7 +29,7 @@ const Main = ({
       {post && !loading?
         <>
         <Article post={post}/>
-        <Comments comment={post.comment}/>
+        <Comments comments={post.comment}/>
       </> : 'Loading...'}
     </section>
   );

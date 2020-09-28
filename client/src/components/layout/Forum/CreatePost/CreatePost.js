@@ -43,6 +43,7 @@ const CreatePost = ({
 
 
   const inputHandler = (e) =>{
+
     setFormData({
       ...formData,
       [e.target.name] : e.target.value
