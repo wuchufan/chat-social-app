@@ -48,8 +48,8 @@ const profileSchema = new Schema({
       type:String
       }
     }
-
   }
+
 
 );
 

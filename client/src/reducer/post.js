@@ -78,9 +78,12 @@ export default function(state = initialState, action){
 
     case SUBMIT_COMMENT_FAIL:
     return{
+      ...state,
       loading:false,
       errorMessage:payload
     }
+
+
 
     default:
     return state;

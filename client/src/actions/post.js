@@ -105,3 +105,35 @@ export const submitComment = (formData) => async (dispatch) =>{
     })
   }
 }
+
+export const increaseOrDecreaseLikes = async (postId) => {
+
+  const config = {
+    "Content-Type" : "application/json"
+  }
+
+  try{
+
+    await axios.put('/api/post/like', {postId}, config);
+
+  } catch (err){
+    console.log(err);
+  }
+}
+
+
+export const increaseView = async (postId) =>{
+  const config = {
+    "Content-Type" : "application/json"
+  }
+
+  try{
+
+    await axios.put('/api/post/visit',{postId},config);
+
+  } catch(err){
+    console.log(err);
+  }
+
+
+}

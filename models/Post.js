@@ -32,15 +32,17 @@ const postSchema = new Schema({
   ],
   likes: [
     {
-      user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'user'
-      }
+      type:String
     }
   ],
   tag:[
     {
       type:String
+    }
+  ],
+  views:[
+    {
+    type:String
     }
   ],
   date:{

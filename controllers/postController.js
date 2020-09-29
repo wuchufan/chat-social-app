@@ -70,10 +70,58 @@ exports.createComment = async (req,res) =>{
 
     res.status(200).json(post);
   } catch(err){
-    
+
     console.log(err);
     res.status(500).json({msg:'Server error'});
   }
+}
 
 
+exports.increaseOrDecreaseLikes = async (req,res) =>{
+
+  const { postId } = req.body;
+  const userId = req.user.id.toString();
+
+  try{
+
+    let post = await Post.findById(postId);
+
+    const userHadLiked = post.likes.indexOf(userId) === -1 ? false : true;
+    if(userHadLiked){
+      post.likes = post.likes.filter((element) => element !== userId);
+    } else{
+      post.likes.push(userId);
+    }
+    await post.save();
+
+    res.status(200).json(post.likes);
+
+
+  } catch (err){
+    console.log(err);
+    res.status(500).json({msg:'Server error'})
+  }
+}
+
+exports.increaseView = async (req,res) =>{
+
+  const { postId } = req.body;
+  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
+  try{
+    let post = await Post.findById(postId);
+    const userHadVisited = post.views.indexOf(ip) === -1 ? false : true;
+
+    if(userHadVisited){
+      return res.status(200).json(post.views);
+    }
+    post.views.push(ip);
+    await post.save();
+
+    res.status(200).json(post.views);
+
+  } catch(err){
+    console.log(err);
+    res.status(500).json({msg:'Server error'})
+  }
 }

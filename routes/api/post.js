@@ -5,7 +5,9 @@ const {
   getAllPosts,
   getOnePost,
   createPost,
-  createComment
+  createComment,
+  increaseOrDecreaseLikes,
+  increaseView
 } = require('../../controllers/postController');
 
 router.route('/')
@@ -14,6 +16,12 @@ router.route('/')
 
 router.route('/comment')
 .post(auth, createComment);
+
+router.route('/visit')
+.put(increaseView);
+
+router.route('/like')
+.put(auth, increaseOrDecreaseLikes)
 
 router.route('/:id')
 .get(getOnePost);

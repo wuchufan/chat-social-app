@@ -11,7 +11,8 @@ const Article = ({
         username
       },
       content,
-      likes
+      likes,
+      views
   }
 }) => {
 
@@ -32,7 +33,7 @@ const Article = ({
       <p className={cls['content']}>
         {content}
       </p>
-      <Media likes={likes}/>
+      <Media views={views} likes={likes}/>
     </article>
   );
 }

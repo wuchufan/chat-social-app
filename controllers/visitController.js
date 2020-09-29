@@ -57,7 +57,6 @@ exports.recordVisit = async (req,res) =>{
   if (process.env.NODE_ENV === 'production') {
   try {
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-
     const visitor = await Visitor.create({
       ipAddress:ip
 

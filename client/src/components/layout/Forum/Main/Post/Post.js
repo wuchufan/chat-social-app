@@ -47,8 +47,8 @@ const Post = ({
       </div>
       <div className={cls['media-info-container']}>
         {comment && likes ? <>
-          <div className={cls['media-info-container__comments']}>{comment.length} Comment{comment.length > 0 ? 's': null}</div>
-          <div className={cls['media-info-container__likes']}>{likes.length} likes{likes.length > 0 ? 's': null}</div>
+          <div className={cls['media-info-container__comments']}>{comment.length} Comment{comment.length > 1 ? 's': null}</div>
+          <div className={cls['media-info-container__likes']}>{likes.length} like{likes.length > 1 ? 's': null}</div>
         </> : null}
       </div>
     </div>
