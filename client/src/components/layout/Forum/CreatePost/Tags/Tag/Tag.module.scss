@@ -1,0 +1,33 @@
+
+.container{
+  display: flex;
+  width:max-content;
+  font-size: inherit;
+  color:#3973AD;
+  background-color:#e1ecf4;
+  padding:3px 5px;
+  margin:0 2px;
+  border-radius: 3px;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+
+
+.tag{
+  margin-right:1rem;
+}
+
+
+.icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  padding:1px 3px;
+  cursor: pointer;
+  &:hover{
+    background-color:#3973AD;
+    color:#e1ecf4;
+  }
+}

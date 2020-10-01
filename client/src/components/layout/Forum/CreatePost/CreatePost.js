@@ -2,6 +2,7 @@ import React,{ useState, useEffect } from 'react';
 import cls from './CreatePost.module.scss';
 import NavBar from '../../NavBar/NavBar';
 import Button from '../../../UI/Buttons/ProfileButton/ProfileButton';
+import Tags from './Tags/Tags';
 import { Prompt } from 'react-router';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -20,7 +21,7 @@ const CreatePost = ({
   const [formData, setFormData] = useState({
     title:'',
     content:'',
-    tag:''
+    tag:[]
   });
 
 
@@ -33,12 +34,12 @@ const CreatePost = ({
   } = formData;
 
   useEffect(()=>{
-    if(title || content || tag){
+    if(title || content || tag.length){
       setShouldBlockNav(true);
     } else {
       setShouldBlockNav(false);
     }
-  },[title,content,tag]);
+  },[title,content,tag.length]);
 
 
 
@@ -79,7 +80,8 @@ const CreatePost = ({
         </div>
         <div>
           <label className={cls['label']}>Tags</label>
-          <input placeholder='game,development etc' className={cls['input']} name='tag' value={tag} onChange={(e)=>inputHandler(e)}/>
+          <Tags formData={formData} setFormData={setFormData}/>
+          {/* <input placeholder='game,development etc' className={cls['input']} name='tag' value={tag} onChange={(e)=>inputHandler(e)}/> */}
         </div>
         <div className={cls['button-group']}>
         <Button submit={true} color='info'>Submit</Button>
