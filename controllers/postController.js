@@ -31,11 +31,11 @@ exports.getOnePost = async (req,res)=>{
 exports.createPost = async (req, res) => {
   const {title, content, tag} = req.body;
   const postData = {};
-
+  console.log(tag);
   postData.user = req.user.id;
   if (title) postData.title = title;
   if (content) postData.content = content;
-  if (tag) postData.tag = tag.split(',');
+  if (tag.length) postData.tag = tag;
 
   postData.comment = [];
   postData.likes = [];

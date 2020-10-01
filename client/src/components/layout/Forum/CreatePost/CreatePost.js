@@ -81,7 +81,7 @@ const CreatePost = ({
         <div>
           <label className={cls['label']}>Tags</label>
           <Tags formData={formData} setFormData={setFormData}/>
-          {/* <input placeholder='game,development etc' className={cls['input']} name='tag' value={tag} onChange={(e)=>inputHandler(e)}/> */}
+
         </div>
         <div className={cls['button-group']}>
         <Button submit={true} color='info'>Submit</Button>

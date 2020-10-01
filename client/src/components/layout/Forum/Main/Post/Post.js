@@ -42,8 +42,7 @@ const Post = ({
       <p className={cls['post-container__intro']}>{shortContent}{shortContent !== content ? '...' : null}</p>
 
       <div className={cls['tags']}>
-        <Tag>game</Tag>
-        <Tag>development</Tag>
+        {tag.map((elem)=><Tag>{elem}</Tag>)}
       </div>
       <div className={cls['media-info-container']}>
         {comment && likes ? <>

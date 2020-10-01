@@ -18,6 +18,8 @@ const NewPosts = ({
 
 }) => {
 
+
+
   const buttonHandler = () =>{
     history.push({pathname:'/forum/create-post'});
   }
@@ -25,11 +27,13 @@ const NewPosts = ({
   return (
     <div className={cls['container']}>
       <div className={cls['title']}>
-        <h1 className={cls['title__text']}>New Posts</h1>
+        <h1 className={cls['title__text']}>New Post</h1>
         {isAuthenticated ?  <Button click={()=>buttonHandler()} type='button' color='info'>Create Post</Button> : null}
       </div>
       {posts ? posts.map((post,i)=>{
-        if(i > 1) {
+        const postsToDisplay = 1 - 1;
+
+        if(i > postsToDisplay) {
           return
         } else{
         return <Post {...post} key={i}/>
