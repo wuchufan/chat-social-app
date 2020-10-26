@@ -17,6 +17,7 @@ exports.getVisitStats = async (req, res)=>{
             lastTimeVisit:-1
           }
         }];
+  //?total = true
   if(req.query.total) pipeline.push({$count:'number of differnet IP'});
   try{
     const stats = await Visitor.aggregate(pipeline);

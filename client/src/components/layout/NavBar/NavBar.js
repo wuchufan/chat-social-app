@@ -55,6 +55,7 @@ const NavBar = ({
     <NavLink activeClassName={classes['active']} exact={true} to='/' onClick={logout} className={classes['navbar__item']}>
       Logout
     </NavLink>
+
   </Fragment>)
 
   return (
