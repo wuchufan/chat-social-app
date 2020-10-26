@@ -12,7 +12,7 @@ const Main = ({
 }) => {
   useEffect(()=>{
     getAllPosts();
-  },[])
+  },[getAllPosts])
 
   return (
     <section className={cls['container']}>

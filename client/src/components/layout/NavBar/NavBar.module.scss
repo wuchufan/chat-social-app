@@ -3,18 +3,22 @@
 .container{
   position:fixed;
   display:grid;
-  grid-template-columns:.2fr 0.5fr 1fr 1fr .5fr;
-  grid-template-areas: '. icon . nav .';
-  background-color: #24292e;
-  opacity:0.8;
+  grid-template-columns:.2fr 0.5fr 1fr 1fr 0.5fr;
+  grid-template-areas: '. icon nav . user';
+  background-color: rgba(#24292e,0.8);
   padding:2rem 1.5rem;
   width:100%;
   font-size: 2rem;
   color:#fff;
   z-index:999;
+
   @include respond(desktopL){
-    grid-template-columns:.2fr 0.5fr 1fr 2fr .5fr;
+    grid-template-columns:.2fr 0.5fr 1fr 1fr 0.7fr;
   }
+  @include respond(laptop){
+      grid-template-columns:.2fr 0.5fr 1fr .5fr 0.7fr;
+  }
+
   @include respond(tablet){
     grid-template-columns: 1fr;
     grid-template-rows:repeat(3,auto);
@@ -46,7 +50,8 @@
   font-weight:600;
   letter-spacing: 2px;
   width: max-content;
-
+  display:flex;
+  align-items: center;
 
   @include respond(tablet){
     margin: 3rem 0;
@@ -72,6 +77,17 @@
     padding:0 0 0 2rem;
   }
 }
+.user{
+  grid-area:user;
+  display:flex;
+  position:relative;
+  width:max-content;
+  @include respond(tablet){
+    display:none;
+  }
+
+}
+
 
 .nav-toggle-button{
   display:none;

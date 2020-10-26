@@ -2,7 +2,6 @@ import React,{ Fragment, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import classes from './Landing.module.scss';
 import { connect } from 'react-redux';
-import NavBar from '../NavBar/NavBar';
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../SignUp/SignUp';
 import PropTypes from 'prop-types';
@@ -16,8 +15,6 @@ const Landing = ({ auth:{ isAuthenticated,user }}) =>{
 
   return (
     <Fragment>
-      <NavBar/>
-
     <section className={classes['landing']}>
       <div className={classes['container']}>
         <div className={classes['title']}>

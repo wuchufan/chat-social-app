@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import classes from './NavBar.module.scss';
 import {logout} from '../../../actions/auth';
 import NavToggleButton from './NavToggleButton/NavToggleButton';
+import UserProfile from './UserProfile/UserProfile'
 
 const NavBar = ({
   auth: {
@@ -27,16 +28,16 @@ const NavBar = ({
 
   const guestNav = (<Fragment>
 
-
+    <NavLink activeClassName={classes['active']} exact={true} to='/' className={classes['navbar__item']}>
+      Main
+    </NavLink>
     <NavLink activeClassName={classes['active']} exact={true} to='/forum' className={classes['navbar__item']}>
       Posts
     </NavLink>
     <NavLink activeClassName={classes['active']} exact={true} to='/people' className={classes['navbar__item']}>
       People
     </NavLink>
-    <NavLink activeClassName={classes['active']} exact={true} to='/' className={classes['navbar__item']}>
-      Main
-    </NavLink>
+
   </Fragment>);
 
   const authNav = (<Fragment>
@@ -52,13 +53,21 @@ const NavBar = ({
     <NavLink activeClassName={classes['active']} exact={true} to='/people' className={classes['navbar__item']}>
       People
     </NavLink>
-    <NavLink activeClassName={classes['active']} exact={true} to='/' onClick={logout} className={classes['navbar__item']}>
-      Logout
-    </NavLink>
+    {
+      showMenu ?  ( <NavLink activeClassName={classes['active']} exact={true} to='/' onClick={logout} className={classes['navbar__item']}>
+            Logout
+          </NavLink>) : null
+    }
+
 
   </Fragment>)
 
+
+
   return (
+
+    <>
+    { location.pathname === '/chat-room' ? null :
     <>
     <nav className={containerClass}>
     <NavLink exact={true} to='/' className={classes['icon']}>{'{G}'}roup</NavLink>
@@ -72,9 +81,20 @@ const NavBar = ({
           : guestNav
       }
     </ul>
-  </nav>
 
-</>)
+    {
+      isAuthenticated && user
+        ? (
+          <div className={classes['user']}>
+            <UserProfile logout={logout} user={user}/>
+          </div>)
+        : null
+    }
+  </nav>
+  </>
+}
+</>
+  )
 }
 
 const mapStateToProps = state => ({auth: state.auth})

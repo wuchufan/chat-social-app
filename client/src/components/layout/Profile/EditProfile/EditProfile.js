@@ -4,7 +4,6 @@ import classes from './EditProfile.module.scss';
 import {connect} from 'react-redux';
 import {getCurrentProfile, editProfile} from '../../../../actions/profile';
 import {editUsername} from '../../../../actions/user';
-import NavBar from '../../NavBar/NavBar';
 import Button from '../../../UI/Buttons/ProfileButton/ProfileButton';
 import Games from './Games/Games';
 
@@ -124,7 +123,7 @@ const EditProfile = ({
   }
 
   return (<Fragment>
-    <NavBar/>
+
     <section className={classes['container']}>
       <h1 className={classes['intro']}>
         Edit Your Profile

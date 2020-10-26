@@ -1,6 +1,5 @@
 import React,{ useState, useEffect } from 'react';
 import cls from './CreatePost.module.scss';
-import NavBar from '../../NavBar/NavBar';
 import Button from '../../../UI/Buttons/ProfileButton/ProfileButton';
 import Tags from './Tags/Tags';
 import { Prompt } from 'react-router';
@@ -66,7 +65,6 @@ const CreatePost = ({
   return (
     <>
     <Prompt when={shouldBlockNav} message={'Are you sure you want to discard your changes?'}/>
-      <NavBar/>
 
       <section className={cls['container']}>
         <form onSubmit={(e)=>submitHandler(e)}>

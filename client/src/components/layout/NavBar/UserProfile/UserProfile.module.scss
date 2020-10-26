@@ -1,0 +1,9 @@
+.img{
+  height:4rem;
+  border-radius: 50%;
+  cursor:pointer;
+  transition:filter 0.2s ease;
+  &:hover{
+    filter:brightness(0.8);
+  }
+}

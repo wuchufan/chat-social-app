@@ -14,7 +14,7 @@ const Comment = ({
   return (
     <div className={cls['container']}>
       <div className={cls['avatar']}>
-        {avatar ? avatar : <img className={cls['avatar__img']} src={defaultImage}/>}
+        {avatar ? avatar : <img className={cls['avatar__img']} src={defaultImage} alt=''/>}
       </div>
       <div className={cls['comment-container']}>
         <p className={cls['comment-container__username']}>{username}</p>

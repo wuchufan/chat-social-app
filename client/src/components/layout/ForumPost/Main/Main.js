@@ -22,7 +22,7 @@ const Main = ({
 
   useEffect(()=>{
     getOnePost(id);
-  },[]);
+  },[getOnePost,id]);
 
   return (
     <section className={cls['container']}>

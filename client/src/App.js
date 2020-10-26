@@ -11,9 +11,11 @@ import People from './components/layout/People/People';
 import Forum from './components/layout/Forum/Forum';
 import ForumPost from './components/layout/ForumPost/ForumPost';
 import CreatePost from './components/layout/Forum/CreatePost/CreatePost';
-
+//navbar
+import NavBar from './components/layout/NavBar/NavBar';
 
 import { loadUser } from './actions/auth';
+import {closeDropDown} from './actions/ui';
 import setAuthState from './uti/setAuthState';
 
 //redux
@@ -41,10 +43,17 @@ const App = () => {
     increaseVisitCount();
   },[]);
 
+  const clickMainHandler = () =>{
+
+    store.dispatch(closeDropDown(store.getState().ui.showDropDown));
+  }
+
   return (
 <Provider store={store}>
   <Router>
-    <Fragment>
+    <NavBar/>
+    <Fragment >
+      <main onClick={clickMainHandler}>
       <Switch>
         <PrivateRoute exact path='/chat-room' component={ChatRoom}/>
         <PrivateRoute exact path='/profile' component={Profile}/>
@@ -55,6 +64,7 @@ const App = () => {
         <Route exact path='/forum' component={Forum}/>
         <Route path='/forum/:id' component={ForumPost}/>
       </Switch>
+    </main>
     </Fragment>
   </Router>
 </Provider>

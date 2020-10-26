@@ -1,0 +1,32 @@
+.container {
+  position: absolute;
+  top: 130%;
+  right: 0;
+  overflow: hidden;
+  transition:max-height 0.1s linear;
+  box-shadow:0 10px 30px -4px rgba(0, 0, 0, 0.15);
+}
+
+.drop-box {
+  display:flex;
+  flex-direction:column;
+  width: 20rem;
+  background-color:#fafafa;
+  color:#333;
+  border-radius:.3rem;
+  overflow: hidden;
+
+  &__profile{
+    font-weight:bold;
+
+  }
+
+  & a{
+    padding: 1rem;
+    font-size: 1.5rem;
+    &:hover{
+      background-color:#eceff1;
+      color:#333;
+    }
+  }
+}

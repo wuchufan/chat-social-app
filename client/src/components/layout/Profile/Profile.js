@@ -1,6 +1,5 @@
 import React,{ Fragment, useEffect } from 'react';
 import classes from './Profile.module.scss';
-import NavBar from '../NavBar/NavBar';
 import Operations from './Operations/Operations';
 import Info from './Info/Info';
 import { connect } from 'react-redux';
@@ -35,7 +34,7 @@ const Profile = ({
 
   return (
     <Fragment>
-      <NavBar/>
+
       <section className={classes['container']}>
         {profile ? <Avatar profile={profile}/> : <Spinner/>}
         <div style={profile ? null : {alignSelf:'center'}} className={classes['profile']}>

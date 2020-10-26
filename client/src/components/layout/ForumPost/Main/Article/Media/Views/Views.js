@@ -13,7 +13,7 @@ const Views = ({
 }) => {
   useEffect(()=>{
     increaseView(id)
-  },[increaseView])
+  },[id])
 
   return (
     <p className={cls['views']}>View{views.length > 1 ? 's' :null}: {views.length > 0 ? views.length : '0'}</p>
