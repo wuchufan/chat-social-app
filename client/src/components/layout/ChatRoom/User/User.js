@@ -4,12 +4,13 @@ import classes from './User.module.scss';
 
 const User = ({user:{
   username,
+  avatar,
   room
 }}) => {
   return (
     <div className={classes['container']}>
       <div className={classes['avatar']}>
-        <img src={defaultImg} alt='avatar' className={classes['avatar__img']}/>
+        <img src={avatar === '' ? defaultImg : avatar} alt='avatar' className={classes['avatar__img']}/>
       </div>
       <div className={classes['username']}>
           {username}

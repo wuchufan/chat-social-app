@@ -36,7 +36,7 @@ const Profile = ({
     <Fragment>
 
       <section className={classes['container']}>
-        {profile ? <Avatar profile={profile}/> : <Spinner/>}
+        {profile ? <Avatar user={user} profile={profile}/> : <Spinner/>}
         <div style={profile ? null : {alignSelf:'center'}} className={classes['profile']}>
           {loading ? null :
           ( profile ? <Info profile={profile}/> :

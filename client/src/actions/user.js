@@ -5,7 +5,9 @@ import {
   GET_ALL_USERS_SUCCESS,
   GET_ALL_USERS_FAIL,
   DELETE_ACCOUNT_FAIL,
-  LOG_OUT
+  LOG_OUT,
+  UPDATE_AVATAR_SUCCESS,
+  UPDATE_AVATAR_FAIL
 } from './types';
 
 //get all users
@@ -28,6 +30,28 @@ export const getAllUsers = () => async dispatch =>{
   }
 }
 
+
+export const editUserAvatar = (newAvatar) => async dispatch =>{
+  const config = {
+    'Content-Type': 'multipart/form-data'
+  }
+
+  try{
+    const res = await axios.put('/api/user/avatar',newAvatar,config);
+
+    dispatch({
+      type:UPDATE_AVATAR_SUCCESS,
+      payload:res.data
+    })
+
+  } catch(err){
+    dispatch({
+      type:UPDATE_AVATAR_FAIL,
+      payload:err
+    })
+
+  }
+}
 
 //edit username
 

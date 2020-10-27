@@ -9,7 +9,9 @@
    USERNAME_EDIT_SUCCESS,
    USERNAME_EDIT_FAIL,
    CLEAR_ERR_MESSAGE,
-   AUTH_LOADING
+   AUTH_LOADING,
+   UPDATE_AVATAR_SUCCESS,
+   UPDATE_AVATAR_FAIL
  } from '../actions/types';
 
 
@@ -98,6 +100,20 @@ export default function(state = initialState, action){
 
     case USERNAME_EDIT_FAIL:
     return {
+      ...state,
+      loading:false,
+      errMessage:payload
+    }
+
+    case UPDATE_AVATAR_SUCCESS:
+    return{
+      ...state,
+      loading:false,
+      user:payload
+    }
+
+    case UPDATE_AVATAR_FAIL:
+    return{
       ...state,
       loading:false,
       errMessage:payload

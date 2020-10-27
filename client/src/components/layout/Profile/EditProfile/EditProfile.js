@@ -4,9 +4,12 @@ import classes from './EditProfile.module.scss';
 import {connect} from 'react-redux';
 import {getCurrentProfile, editProfile} from '../../../../actions/profile';
 import {editUsername} from '../../../../actions/user';
+import {editUserAvatar} from '../../../../actions/user';
 import Button from '../../../UI/Buttons/ProfileButton/ProfileButton';
+import InputFileButton from '../../../UI/Buttons/InputButton/InputButton';
 import Games from './Games/Games';
-import defaultImage from '../../../../assets/img/default.jpg'
+import defaultImage from '../../../../assets/img/default.jpg';
+
 
 const EditProfile = ({
   history,
@@ -21,12 +24,13 @@ const EditProfile = ({
   },
   getCurrentProfile,
   editUsername,
-  editProfile
+  editProfile,
+  editUserAvatar
 }) => {
 
   const [formData, setFormData] = useState({
     newUserName: username,
-    newAvatar:avatar,
+    newAvatar:'',
     age: '',
     school: '',
     major: '',
@@ -37,6 +41,10 @@ const EditProfile = ({
       genre:'',
       comment:''
     }]
+  });
+
+  const [previewImage, setPreviewImage] = useState({
+    previewURL:''
   })
 
   useEffect(() => {
@@ -74,7 +82,12 @@ const EditProfile = ({
         : !profile.social
           ? ''
           : profile.social.facebook ?? ''
-    }})
+    }});
+
+    setPreviewImage(prevState=>({
+      ...prevState,
+      previewURL:avatar
+    }))
 
   }, [getCurrentProfile, profile]);
   const {
@@ -87,6 +100,11 @@ const EditProfile = ({
     github,
     facebook
   } = formData;
+
+
+  const {
+    previewURL
+  } = previewImage
 
   const onChange = (e) => {
     setFormData({
@@ -127,9 +145,6 @@ const EditProfile = ({
   }
 
 
-  const changeAvatarhandler = () =>{
-
-  }
 
   return (<Fragment>
 
@@ -143,7 +158,10 @@ const EditProfile = ({
           if (newUserName !== username && newUserName) {
             await editUsername({newUserName});
           }
-
+          if(previewURL && previewURL !== avatar){
+            console.log(newAvatar);
+            await editUserAvatar(newAvatar)
+          }
 
           await editProfile({age, school, major, github, facebook,games});
 
@@ -151,8 +169,16 @@ const EditProfile = ({
         }}>
         <div className={classes['img-container']}>
           <h1 className={classes['title']}>Profile Picture</h1>
-          <img className={classes['img']} src={defaultImage}/>
-          <Button color='info' click={changeAvatarhandler}>Choose Different Picture</Button>
+          <div className={classes['img-container__inner']}>
+          <img className={classes['img']} src={previewURL === '' ? defaultImage : previewURL}/>
+          <InputFileButton
+            setPreviewImage={setPreviewImage}
+            setFormData={setFormData}
+            style={{marginLeft:'2rem'}}
+            type='button'
+            color='info'
+            name='avatar'>Choose file</InputFileButton>
+          </div>
         </div>
         <div>
           <h1 className={classes['title']}>Basic information</h1>
@@ -198,4 +224,4 @@ const EditProfile = ({
 
 const mapStateToProps = state => ({profile: state.profile, auth: state.auth});
 
-export default connect(mapStateToProps, {getCurrentProfile, editUsername, editProfile})(withRouter(EditProfile));
+export default connect(mapStateToProps, {getCurrentProfile, editUsername, editProfile, editUserAvatar})(withRouter(EditProfile));

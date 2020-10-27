@@ -15,7 +15,7 @@ const UserProfile = ({user, logout,dropDownStatus,toggleDropDown}) => {
 
   return (
     <>
-      <img onClick={clickImageHandler} className={cls['img']} src={defaultImage}/>
+      <img onClick={clickImageHandler} className={cls['img']} src={user.avatar === '' ? defaultImage : user.avatar}/>
       <DropDown logout={logout} user={user}/>
     </>
   );

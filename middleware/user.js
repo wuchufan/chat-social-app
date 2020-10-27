@@ -4,16 +4,17 @@ const sharp = require('sharp')
 exports.uploadAvatar = async (req, res, next) =>{
 
   try{
+
   const avatar = req.file;
   const body = await sharp(avatar.buffer)
   .resize({
-    width:200,
-    height:200
+    width:230,
+    height:230
   })
   .toBuffer()
 
 
-  const key = `avatar_${avatar.originalname}`;
+  const key = `${req.user.id}_avatar_${avatar.originalname}`;
   const params = {
     Bucket: process.env.S3_BUCKET,
     Key:key,

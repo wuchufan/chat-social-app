@@ -7,7 +7,8 @@ const ReceiveChat = ({
   receiveMsg:{
     user:{
       _id,
-      username
+      username,
+      avatar
     },
     timeInfo,
     msg,
@@ -22,7 +23,7 @@ const ReceiveChat = ({
   if(showFull){
     renderFull = (<Fragment>
         <div className={classes['message__avatar']}>
-              <img className={classes['avatar']} src={defaultImg} alt='avatar'/>
+              <img className={classes['avatar']} src={avatar === '' ? defaultImg : avatar} alt='avatar'/>
             </div>
             <div className={classes['message__namedate']}>
                 <span className={classes['message__name']}>

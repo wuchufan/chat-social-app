@@ -7,14 +7,15 @@ const Comment = ({
   date,
   text,
   user:{
-    username
-  },
-  avatar
+    username,
+    avatar
+  }
 }) => {
+  console.log(avatar);
   return (
     <div className={cls['container']}>
       <div className={cls['avatar']}>
-        {avatar ? avatar : <img className={cls['avatar__img']} src={defaultImage} alt=''/>}
+         <img className={cls['avatar__img']} src={avatar === '' ? defaultImage : avatar} alt=''/>
       </div>
       <div className={cls['comment-container']}>
         <p className={cls['comment-container__username']}>{username}</p>

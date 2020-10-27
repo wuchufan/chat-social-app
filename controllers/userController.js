@@ -46,15 +46,13 @@ exports.updateUserAvatar = async (req, res)=>{
     const user = await User.findOne({_id:req.user.id});
     if(!user) return res.status(400).json({msg:'No user found'});
 
-    const newUserAvatar = await User.findOndAndUpdate(
+    const newUserProfile = await User.findOneAndUpdate(
       {_id:req.user.id},
-      {$set:{avatar:req.avatar}}
-    )
+      {$set:{avatar:req.avatar.Location}},
+      {new:true}
+    );
 
-  res.json({
-    msg:'update user avatar info to database',
-    avatar:req.avatar
-  })
+  res.json(newUserProfile)
   } catch(err){
     console.log(err);
   res.status(500).json('Server error')
