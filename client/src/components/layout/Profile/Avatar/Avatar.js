@@ -6,9 +6,7 @@ import defaultImg from '../../../../assets/img/default.jpg';
 
 
 
-const Avatar = ({profile, user:{
-  avatar
-}}) => {
+const Avatar = ({profile}) => {
 
   let school, major;
   let socialArr = profile.social ? Object.keys(profile.social): [];
@@ -21,7 +19,7 @@ const Avatar = ({profile, user:{
 
   return (
     <div className={classes['avatar']}>
-      <img alt='avt' src={avatar === ''? defaultImg : avatar} className={classes['avatar__img']}/>
+      <img alt='avt' src={profile.user.avatar === '' ? defaultImg : profile.user.avatar} className={classes['avatar__img']}/>
       {/* Username */}
       <h1 className={classes['avatar__username']} style={hasEduProfile ? null : {marginBottom:0}}>{profile.user.username}</h1>
       {/* Education */}
