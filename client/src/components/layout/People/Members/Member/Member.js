@@ -28,7 +28,7 @@ education
     <>
     <div className={cls['container']}>
       <div className={cls['avatar']}>
-        <img alt='' className={cls['avatar__img']} src={avatar?? defaultImage}/>
+        <img alt='' className={cls['avatar__img']} src={avatar ===''? defaultImage : ''}/>
       </div>
       <div className={cls['username']}>
         <p>{username}</p>

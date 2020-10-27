@@ -6,12 +6,14 @@ import {getCurrentProfile, editProfile} from '../../../../actions/profile';
 import {editUsername} from '../../../../actions/user';
 import Button from '../../../UI/Buttons/ProfileButton/ProfileButton';
 import Games from './Games/Games';
+import defaultImage from '../../../../assets/img/default.jpg'
 
 const EditProfile = ({
   history,
   auth: {
     user: {
-      username
+      username,
+      avatar
     }
   },
   profile: {
@@ -24,6 +26,7 @@ const EditProfile = ({
 
   const [formData, setFormData] = useState({
     newUserName: username,
+    newAvatar:avatar,
     age: '',
     school: '',
     major: '',
@@ -76,6 +79,7 @@ const EditProfile = ({
   }, [getCurrentProfile, profile]);
   const {
     newUserName,
+    newAvatar,
     age,
     school,
     major,
@@ -122,6 +126,11 @@ const EditProfile = ({
     history.push({pathname:'/profile'})
   }
 
+
+  const changeAvatarhandler = () =>{
+
+  }
+
   return (<Fragment>
 
     <section className={classes['container']}>
@@ -133,12 +142,18 @@ const EditProfile = ({
           e.preventDefault();
           if (newUserName !== username && newUserName) {
             await editUsername({newUserName});
-
           }
+
+
           await editProfile({age, school, major, github, facebook,games});
 
           history.push({pathname: '/profile'});
         }}>
+        <div className={classes['img-container']}>
+          <h1 className={classes['title']}>Profile Picture</h1>
+          <img className={classes['img']} src={defaultImage}/>
+          <Button color='info' click={changeAvatarhandler}>Choose Different Picture</Button>
+        </div>
         <div>
           <h1 className={classes['title']}>Basic information</h1>
           <label className={classes['label']}>Username</label>

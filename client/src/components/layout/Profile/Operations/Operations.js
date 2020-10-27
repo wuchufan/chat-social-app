@@ -13,10 +13,16 @@ const Operations = ({deleteAccount,profile:{profile}, history}) => {
     history.push({pathname:'/profile/edit-profile'})
   }
 
+  const deleteAccountHandler = () =>{
+    let confirmDelete = window.confirm('Are you sure you want to delete your account?');
+    if(confirmDelete) deleteAccount()
+    else return;
+  }
+
   return (
     <div className={classes['container']}>
     <Button click={editHandler} color={'info'}>Edit Profile</Button>
-    <Button click={deleteAccount} color={'danger'}>Delete Account</Button>
+    <Button click={deleteAccountHandler} color={'danger'}>Delete Account</Button>
     </div>
   );
 }

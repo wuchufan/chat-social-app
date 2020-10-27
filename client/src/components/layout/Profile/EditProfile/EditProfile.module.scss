@@ -13,6 +13,18 @@
   }
 
 }
+
+.img-container{
+  display:flex;
+  flex-direction:column;
+  margin-bottom: 2rem;
+}
+
+.img{
+  width:25rem;
+    margin-bottom: 2rem;
+}
+
 .intro{
   font-size: 5.5rem;
   color:#17a2b8;
@@ -36,5 +48,4 @@
 }
 .button-group{
   display:flex;
-
 }
