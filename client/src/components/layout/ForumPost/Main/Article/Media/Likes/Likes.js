@@ -30,7 +30,7 @@ const Likes = ({
       }
     }
 
-  },[likes,isAuthenticated,user._id])
+  },[likes,isAuthenticated])
 
 
   const increaseLikeHanlder = () =>{
